@@ -1,0 +1,23 @@
+name: Create css file for jsdelivr.
+
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - id: listup-targets
+        run: |
+          files=$(ls styles/*.css)
+          escaped_files="${files//$'\n'/\ }"
+          echo "::set-output name=files::${escaped_files}"
+      - name: Prepare distibutable stylesheet.
+        uses: ftnext/action-concatenate-files@main
+        with:
+          sources: ${{ steps.listup-targets.outputs.files }}
+          destination: dist/protocuda.css
