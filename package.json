@@ -1,6 +1,6 @@
 {
   "name": "protokuda",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "index.js",
   "repository": "git@github.com:dennisdunn/protokuda.git",
   "author": "Dennis Dunn <ansofive@gmail.com>",
@@ -9,7 +9,7 @@
     "build": "mkdir dist && cat src/styles/*.css > dist/protokuda.css",
     "clean": "rm -rf dist",
     "preversion": "git fetch --tags",
-    "version": "npm run build && git add -A dist",
+    "version": "npm run clean && npm run build && git add -A dist",
     "postversion": "git push  && git push --tags",
     "publish": "npm version minor"
   },
