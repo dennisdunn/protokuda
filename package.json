@@ -1,0 +1,14 @@
+{
+  "name": "protokuda",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:dennisdunn/protokuda.git",
+  "author": "Dennis Dunn <ansofive@gmail.com>",
+  "license": "MIT",
+  "scripts":{
+    "build": "mkdir dist && cat src/styles/*.css > dist/protokuda.css",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+  }
+}
