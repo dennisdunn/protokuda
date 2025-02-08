@@ -9,7 +9,7 @@
     "build": "mkdir dist && cat src/styles/*.css > dist/protokuda.css",
     "clean": "rm -rf dist",
     "preversion": "git fetch --tags",
-    "version": "npm run build",
+    "version": "npm run build && git add -A dist",
     "postversion": "git push  && git push --tags",
     "publish": "npm version minor"
   },
