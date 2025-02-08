@@ -6,6 +6,8 @@ Frame
     position: relative;
     border-style: solid;
     border-radius: 1rem;
+    background-color: var(--frame-bg);
+    border-color: var(--frame-border);
 }
 
 .frame.std {
@@ -37,12 +39,14 @@ Frame
     position: absolute;
     right: 1.5rem;
     top: 0.5rem;
+    color: var(--title-text);
 }
 
 .frame>.label {
     position: absolute;
     right: 1.5rem;
     bottom: 0.5rem;
+    color: var(--label-text);
 }
 
 .frame>.content {
@@ -67,9 +71,6 @@ Frame
     border-radius: 1rem;
     border-top-left-radius: 0rem;
     border-bottom-left-radius: 0rem;
-    background-color:gray;
-    color:white;
-    
 }
 
 .frame>.button-bar>button:not(:last-child) {

@@ -3,7 +3,11 @@ Controls
 */
 
 input {
-  border:none;
+  border: none;
+}
+
+input[type="range"]{
+  accent-color:var(--button-color);
 }
 
 input[type="number"] {
@@ -16,6 +20,14 @@ input[type="range"] {
   outline: none;
 }
 
+input[type="radio"]{
+  accent-color:var(--button-color);
+}
+
+input[type="checkbox"]{
+  accent-color:var(--button-color);
+}
+
 input[type="range"].vertical {
   -webkit-appearance: slider-vertical;
 }
@@ -25,8 +37,18 @@ button::-moz-focus-inner {
 }
 
 button {
-  outline: none; 
+  outline: none;
   border: none;
-  padding:0.5rem;
+  padding: 0.5rem;
   text-align: left;
+}
+
+button {
+  color: var(--button-text);
+  background-color: var(--button-color);
+}
+
+button:hover {
+  color: var(--button-color);
+  background-color: var(--button-text);
 }

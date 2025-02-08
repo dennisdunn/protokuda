@@ -1,14 +1,26 @@
 /**
+Default values for the CSS variables
+*/
+:root {
+  --bg: lightgray;
+  --frame-bg: white;
+  --frame-border: black;
+  --button-text: white;
+  --button-color: gray;
+}
+
+/**
 Body
 */
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica', sans-serif;
+  font-family: var(--sans-font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg);
 }
 
 code {
-  font-family: Menlo, Monaco, 'Courier New', monospace;
+  font-family: var(--mono-font-family);
 }
