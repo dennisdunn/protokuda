@@ -1,0 +1,32 @@
+/**
+Controls
+*/
+
+input {
+  border:none;
+}
+
+input[type="number"] {
+  text-align: center;
+  border: none;
+}
+
+input[type="range"] {
+  writing-mode: bt-lr;
+  outline: none;
+}
+
+input[type="range"].vertical {
+  -webkit-appearance: slider-vertical;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+button {
+  outline: none; 
+  border: none;
+  padding:0.5rem;
+  text-align: left;
+}

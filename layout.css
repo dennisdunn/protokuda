@@ -1,0 +1,40 @@
+.screen {
+  height: 90vh;
+  display: grid;
+  grid-gap: 24px;
+  margin: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 20% 40% 40%;
+  grid-template-areas:
+    'a a e e'
+    'b b d c'
+    'b b f f';
+}
+
+.screen .a {
+  grid-area: a;
+}
+
+.screen .b {
+  grid-area: b;
+}
+
+.screen .c {
+  grid-area: c;
+}
+
+.screen .d {
+  grid-area: d;
+}
+
+.screen .e {
+  grid-area: e;
+}
+
+.screen .f {
+  grid-area: f;
+}
+
+.screen .g {
+  grid-area: g;
+}

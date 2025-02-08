@@ -1,0 +1,77 @@
+/**
+Frame
+*/
+
+.frame {
+    position: relative;
+    border-style: solid;
+    border-radius: 1rem;
+}
+
+.frame.std {
+    border-width: 1rem 0rem 1rem 1rem;
+    border-radius: 2rem;
+}
+
+.frame.bracket {
+    border-width: 0rem 1rem 0rem 1rem;
+    border-radius: 2rem;
+}
+
+.frame.partial {
+    border-width: 0rem 0rem 1rem 1rem;
+    border-radius: 2rem;
+}
+
+.frame.mirror {
+    border-width: 0rem 1rem 1rem 0rem;
+    border-radius: 2rem;
+}
+
+.frame.vmirror {
+    border-width: 1rem 0rem 0rem 1rem;
+    border-radius: 2rem;
+}
+
+.frame>.title {
+    position: absolute;
+    right: 1.5rem;
+    top: 0.5rem;
+}
+
+.frame>.label {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 0.5rem;
+}
+
+.frame>.content {
+    overflow: hidden;
+    margin: 1rem;
+}
+
+.frame.buttons {
+    border-left-width: 5rem;
+}
+
+.frame>.button-bar {
+    position: absolute;
+    top: 2rem;
+    left: -5rem;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.frame>.button-bar>button {
+    width: 5.5rem;
+    border-radius: 1rem;
+    border-top-left-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+    background-color:gray;
+    color:white;
+    
+}
+
+.frame>.button-bar>button:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
