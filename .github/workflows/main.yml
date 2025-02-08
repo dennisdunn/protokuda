@@ -14,10 +14,9 @@ jobs:
       - id: listup-targets
         run: |
           files=$(ls styles/*.css)
-          escaped_files="${files//$'\n'/\ }"
-          echo "::set-output name=files::${escaped_files}"
+          escaped_files="${files//$'\n'/\ }"\
       - name: Prepare distibutable stylesheet.
         uses: ftnext/action-concatenate-files@main
         with:
-          sources: ${{ steps.listup-targets.outputs.files }}
+          sources: ${{ steps.listup-targets.escaped_files }}
           destination: dist/protocuda.css
