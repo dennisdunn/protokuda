@@ -1,4 +1,11 @@
+/**
+Default values for the CSS variables
+*/
 :root {
+    /** Fonts */
+    --sans-font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica', sans-serif;
+    --mono-font-family: Menlo, Monaco, 'Courier New', monospace;
+    /** Colors */
     --gray: #789 !important;
     --white: #fff !important;
     --black: #000 !important;
@@ -33,4 +40,21 @@
     --husk: #ba5 !important;
     --rust: #b41 !important;
     --tamarillo: #821 !important;
+    /** Default Theme */
+    --backdrop: gray;
+    --backdrop-light: lightgray;
+    --backdrop-dark: darkgray;
+    --on-backdrop: black;
+    --primary: black;
+    --primary-light: gray;
+    --primary-dark: black;
+    --on-primary: white;
+    --secondary: white;
+    --secondary-light: white;
+    --secondary-dark: whitesmoke;
+    --on-secondary: black;
+    --error: var(--red-alert);
+    --on-error: black;
+    --accent: lightgray;
+    --on-accent: black;
 }

@@ -6,8 +6,8 @@ Frame
     position: relative;
     border-style: solid;
     border-radius: 1rem;
-    background-color: var(--frame-bg);
-    border-color: var(--frame-border);
+    background-color: var(--backdrop-light);
+    border-color: var(--primary);
 }
 
 .frame.std {
@@ -39,14 +39,14 @@ Frame
     position: absolute;
     right: 1.5rem;
     top: 0.5rem;
-    color: var(--title-text);
+    color: var(--on-backdrop);
 }
 
 .frame>.label {
     position: absolute;
     right: 1.5rem;
     bottom: 0.5rem;
-    color: var(--label-text);
+    color: var(--on-backdrop);
 }
 
 .frame>.content {

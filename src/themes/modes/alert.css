@@ -1,0 +1,5 @@
+/**
+*/
+[data-theme="red-alert"] {
+    --primary: var(--error);
+}

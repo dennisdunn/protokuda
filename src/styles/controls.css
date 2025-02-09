@@ -6,8 +6,18 @@ input {
   border: none;
 }
 
-input[type="range"]{
-  accent-color:var(--button-color);
+input {
+  accent-color:var(--accent);
+}
+
+input[type="text"]{
+  color:var(--on-accent);
+  background-color: var(--accent);
+}
+
+input[type="number"]{
+  color:var(--on-accent);
+  background-color: var(--accent);
 }
 
 input[type="number"] {
@@ -18,14 +28,6 @@ input[type="number"] {
 input[type="range"] {
   writing-mode: bt-lr;
   outline: none;
-}
-
-input[type="radio"]{
-  accent-color:var(--button-color);
-}
-
-input[type="checkbox"]{
-  accent-color:var(--button-color);
 }
 
 input[type="range"].vertical {
@@ -44,11 +46,9 @@ button {
 }
 
 button {
-  color: var(--button-text);
-  background-color: var(--button-color);
+  background-color: var(--secondary-light);
 }
 
 button:hover {
-  color: var(--button-color);
-  background-color: var(--button-text);
+  background-color: var(--secondary-dark);
 }
