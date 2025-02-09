@@ -1,0 +1,35 @@
+/**
+*/
+:root {
+    /** Palette (Triad) */
+    --primary-lighter: #ffc164;
+    --primary-light: #ffb039;
+    --primary: #ff9900;
+    --primary-dark: #c67600;
+    --primary-darker: #9b5d00;
+    --secondary-lighter: #655ec5;
+    --secondary-light: #463db7;
+    --secondary: #2419b2;
+    --secondary-dark: #1b128a;
+    --secondary-darker: #120b6c;
+    --accent-lighter: #4bbf99;
+    --accent-light: #27af83;
+    --accent: #00aa72;
+    --accent-dark: #008458;
+    --accent-darker: #006746;
+    /** Theme */
+    --backdrop: black;
+    --backdrop-light: black;
+    --backdrop-dark: black;
+    --on-backdrop: var(--primary);
+    --on-primary: black;
+    --secondary-light:var(--secondary-lighter);
+    --on-secondary: white;
+    --error: var(--red-alert);
+    --on-error: black;
+    --on-accent: #2419b2;
+
+    button:hover {
+        color: var(--primary);
+    }
+}

@@ -6,12 +6,10 @@
   "author": "Dennis Dunn <ansofive@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "mkdir dist && cat src/styles/*.css > dist/protokuda.css",
-    "clean": "rm -rf dist",
+    "build": "rm -rf dist && mkdir dist && cat src/styles/*.css > dist/protokuda.css && cp src/themes/*.css dist",
     "preversion": "git fetch --tags",
-    "version": "npm run clean && npm run build && git add -A dist",
-    "postversion": "git push  && git push --tags",
-    "publish": "npm version minor"
+    "version": "npm run build && git add -A dist",
+    "postversion": "git push  && git push --tags"
   },
   "devDependencies": {}
 }
