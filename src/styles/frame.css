@@ -58,12 +58,24 @@ Frame
     border-left-width: 5rem;
 }
 
+.frame.status {
+    border-bottom-width: 2rem;
+}
+
 .frame>.button-bar {
     position: absolute;
     top: 2rem;
     left: -5rem;
     display: flex;
     flex-flow: column nowrap;
+}
+
+.frame>.status-bar {
+    position: absolute;
+    bottom: -1.5rem;
+    right: 1rem;
+    display: flex;
+    flex-flow: row nowrap;
 }
 
 .frame>.button-bar>button {
