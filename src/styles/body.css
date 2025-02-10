@@ -3,6 +3,13 @@
 /**
 Body
 */
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap');
+
+:root {
+    /** Fonts */
+    --sans-font-family: 'Antonio', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica', sans-serif;
+    --mono-font-family: Menlo, Monaco, 'Courier New', monospace;
+}
 
 body {
   margin: 0;

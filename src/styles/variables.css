@@ -2,9 +2,6 @@
 Default values for the CSS variables
 */
 :root {
-    /** Fonts */
-    --sans-font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica', sans-serif;
-    --mono-font-family: Menlo, Monaco, 'Courier New', monospace;
     /** Colors */
     --gray: #789 !important;
     --white: #fff !important;
