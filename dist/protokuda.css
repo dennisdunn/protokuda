@@ -3,6 +3,13 @@
 /**
 Body
 */
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap');
+
+:root {
+    /** Fonts */
+    --sans-font-family: 'Antonio', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica', sans-serif;
+    --mono-font-family: Menlo, Monaco, 'Courier New', monospace;
+}
 
 body {
   margin: 0;
@@ -470,9 +477,6 @@ Frame
 Default values for the CSS variables
 */
 :root {
-    /** Fonts */
-    --sans-font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica', sans-serif;
-    --mono-font-family: Menlo, Monaco, 'Courier New', monospace;
     /** Colors */
     --gray: #789 !important;
     --white: #fff !important;
