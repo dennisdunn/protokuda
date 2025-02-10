@@ -7,16 +7,16 @@ input {
 }
 
 input {
-  accent-color:var(--accent);
+  accent-color: var(--accent);
 }
 
-input[type="text"]{
-  color:var(--on-accent);
+input[type="text"] {
+  color: var(--on-accent);
   background-color: var(--accent);
 }
 
-input[type="number"]{
-  color:var(--on-accent);
+input[type="number"] {
+  color: var(--on-accent);
   background-color: var(--accent);
 }
 
@@ -31,7 +31,8 @@ input[type="range"] {
 }
 
 input[type="range"].vertical {
-  -webkit-appearance: slider-vertical;
+  writing-mode: vertical-lr;
+  direction: rtl;
 }
 
 button::-moz-focus-inner {
