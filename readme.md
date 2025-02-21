@@ -31,4 +31,4 @@ Each frame can have content identified by the following classes:
 - ```title```
 - ```label```
 - ```content```
-- ``sb-items```
+- ```sb-items```
