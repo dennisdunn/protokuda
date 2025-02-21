@@ -24,11 +24,11 @@ Frames provide a place for content to live. There are 6 base frames and one modi
 - Brackedted frame ```frame bracket```
 
 #### Frame modifiers
-- Frame button bar ```frame std buttons```
+- Frame button bar ```frame std sidebar```
 
 #### Frame Contents
 Each frame can have content identified by the following classes:
 - ```title```
 - ```label```
 - ```content```
-- ```button-bar```
+- ``sb-items```
