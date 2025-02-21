@@ -16,7 +16,7 @@ in the screen.
 Frames provide a place for content to live. There are 6 base frames and one modifier.
 
 #### Frame Types
-- Empty frame ```frame```
+- Base frame ```frame```
 - Standard frame ```frame std```
 - Partial frame ```frame partial```
 - Mirror frame ```frame mirror```
