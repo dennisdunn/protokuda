@@ -20,18 +20,23 @@ Frame
     border-radius: 2rem;
 }
 
-.frame.partial {
+.frame.lpartial {
     border-width: 0rem 0rem 1rem 1rem;
     border-radius: 2rem;
 }
 
-.frame.mirror {
+.frame.rpartial {
     border-width: 0rem 1rem 1rem 0rem;
     border-radius: 2rem;
 }
 
-.frame.vmirror {
+.frame.lmirror {
     border-width: 1rem 0rem 0rem 1rem;
+    border-radius: 2rem;
+}
+
+.frame.rmirror {
+    border-width: 1rem 1rem 0rem 0rem;
     border-radius: 2rem;
 }
 
@@ -47,18 +52,23 @@ Frame
     right: 1.5rem;
     bottom: 0.5rem;
     color: var(--on-backdrop);
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 .frame>.content {
     overflow: hidden;
-    margin: 1rem;
+    margin: 2.5rem 1rem 1rem 1.5rem;
+    display: flex;
+    flex-flow: row wrap;
+    color: var(--on-secondary)
 }
 
-.frame.sidebar {
+.frame.sidebarFrame {
     border-left-width: 5rem;
 }
 
-.frame>.sb-items {
+.frame>.sidebar {
     position: absolute;
     top: 2rem;
     left: -5rem;
@@ -66,26 +76,24 @@ Frame
     flex-flow: column nowrap;
 }
 
-.frame.statusline {
-    border-bottom-width: 2rem;
-}
-
-.frame>.sl-items {
-    position: absolute;
-    bottom: -1.5rem;
-    right: 1rem;
-    display: flex;
-    flex-flow: row nowrap;
-}
-
-.frame>.sb-items>button {
-    width: 5.5rem;
-    border-radius: 1rem;
-    border-top-left-radius: 0rem;
-    border-bottom-left-radius: 0rem;
+.frame>.sidebar>.button {
+    width: 5rem;
+    overflow: hidden;
     text-transform: uppercase;
 }
 
-.frame>.sb-items>button:not(:last-child) {
+.frame>.sidebar>.button:not(:last-child) {
     margin-bottom: 0.5rem;
+}
+
+.frame.statuslineFrame {
+    border-bottom-width: 2rem;
+}
+
+.frame>.statusline {
+    position: absolute;
+    bottom: -1.5rem;
+    right: 2rem;
+    display: flex;
+    flex-flow: row nowrap;
 }

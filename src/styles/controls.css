@@ -35,21 +35,21 @@ input[type="range"].vertical {
   direction: rtl;
 }
 
-button::-moz-focus-inner {
+.button::-moz-focus-inner {
   border: 0;
 }
 
-button {
+.button {
   outline: none;
   border: none;
   padding: 0.5rem;
   text-align: left;
 }
 
-button {
+.button {
   background-color: var(--secondary-light);
 }
 
-button:hover {
+.button:hover {
   background-color: var(--secondary-dark);
 }
