@@ -1,0 +1,24 @@
+/**
+Default values for the CSS variables
+*/
+:root {
+    /** Default Theme */
+    --backdrop: var(--gray);
+    --backdrop-light: var(--light-gray);
+    --backdrop-dark: var(--dark-gray);
+    --on-backdrop: var(--black);
+    --primary: var(--black);
+    --primary-light: var(--gray);
+    --primary-dark: var(--black);
+    --on-primary: var(--white);
+    --secondary: var(--white);
+    --secondary-light: var(--white);
+    --secondary-dark: var(--light-gray);
+    --on-secondary: var(--black);
+    --accent: var(--gray);
+    --accent-light: var(--light-gray);
+    --accent-dark: var(--dark-gray);
+    --on-accent: var(--white);
+    --error: var(--red-alert);
+    --on-error: var(--black);
+}

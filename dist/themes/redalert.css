@@ -1,0 +1,27 @@
+
+:root {
+    --backdrop: var(--black);
+    --backdrop-light: var(--black);
+    --backdrop-dark: var(--black);
+    --on-backdrop: var(--primary);
+    --primary:  #d82c2c;
+    --primary-light: var(--gray);
+    --primary-dark: var(--black);
+    --on-primary:  #f1e8c6;
+    --secondary:  rgb(240, 90, 40);
+    --secondary-light: #f37b53;
+    --secondary-dark: #e54510;
+    --on-secondary:  #f1e8c6;
+    --accent: #f6b83c;
+    --accent-light: var(--light-gray);
+    --accent-dark: var(--dark-gray);
+    --on-accent:  #913d3b;
+    --error: var(--red-alert);
+    --on-error: var(--black);
+}
+
+input[type="button"],
+.button {
+    color:var(--backdrop);
+    background-color:var(--accent);
+}
