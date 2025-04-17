@@ -15,27 +15,32 @@ Frame
     border-radius: 2rem;
 }
 
+.frame.std.mirror {
+    border-width: 1rem 1rem 1rem 0rem;
+    border-radius: 2rem;
+}
+
 .frame.bracket {
     border-width: 0rem 1rem 0rem 1rem;
     border-radius: 2rem;
 }
 
-.frame.lpartial {
+.frame.partial {
     border-width: 0rem 0rem 1rem 1rem;
     border-radius: 2rem;
 }
 
-.frame.rpartial {
+.frame.partial.mirror {
     border-width: 0rem 1rem 1rem 0rem;
     border-radius: 2rem;
 }
 
-.frame.lmirror {
+.frame.partial.flip {
     border-width: 1rem 0rem 0rem 1rem;
     border-radius: 2rem;
 }
 
-.frame.rmirror {
+.frame.partial.mirror.flip {
     border-width: 1rem 1rem 0rem 0rem;
     border-radius: 2rem;
 }
@@ -64,11 +69,11 @@ Frame
     color: var(--on-secondary)
 }
 
-.frame.sidebarFrame {
+.frame.sidebar {
     border-left-width: 5rem;
 }
 
-.frame>.sidebar {
+.frame>.items {
     position: absolute;
     top: 2rem;
     left: -5rem;
@@ -76,21 +81,21 @@ Frame
     flex-flow: column nowrap;
 }
 
-.frame>.sidebar>.button {
+.frame>.items>.button {
     width: 5rem;
     overflow: hidden;
     text-transform: uppercase;
 }
 
-.frame>.sidebar>.button:not(:last-child) {
+.frame>.items>.button:not(:last-child) {
     margin-bottom: 0.5rem;
 }
 
-.frame.statuslineFrame {
+.frame.statusline {
     border-bottom-width: 2rem;
 }
 
-.frame>.statusline {
+.frame>.status {
     position: absolute;
     bottom: -1.5rem;
     right: 2rem;
