@@ -4,11 +4,15 @@
 
 ### Usage
 
-Grab the stylesheet from the repository at ```dist/protocuda.css``` or use
+Grab the stylesheet from 
 ```https://cdn.jsdelivr.net/gh/dennisdunn/protokuda/dist/protokuda.min.css```
 
 An example theme is available at 
 ```https://cdn.jsdelivr.net/gh/dennisdunn/protokuda/dist/themes/atomictangerine.min.css```
+
+Other themes include:
+- Grey Smoke (greysmoke.css)
+- Red Alert (redalert.css)
 
 ## Protokuda CSS Classes
 ### Top-level Container
@@ -37,3 +41,12 @@ Each frame can have content identified by the following classes:
 - ```content``` The frames main content.
 - ```items``` The items to be rendered in the sidebar.
 - ```status``` The text for the status line.
+
+## Dynamic Theme Selection
+The ```index.html``` file in the repository illustrates two techniques for
+dynamically changing themes and theme components.
+
+The first is to change the ```href=``` attribute of the of the stylesheet link in
+the documents header. See the ```changeTheme()``` handler.
+
+The second technique is to use ```data-``` attributes along with CSS attribute selectors. See the ```toggleAlert()``` handler.

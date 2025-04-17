@@ -9,20 +9,37 @@
   <link rel="stylesheet" href="styles/colors.css" />
   <link rel="stylesheet" href="styles/controls.css" />
   <link rel="stylesheet" href="styles/frame.css" />
-  <link id="theme" rel="stylesheet" href="themes/redalert.css" />
+  <link id="theme" rel="stylesheet" href="themes/greysmoke.css" />
   <title>Protokuda</title>
 
   <script>
-    function changeTheme(dropdown){
+    function changeTheme(dropdown) {
       const theme = dropdown.options[dropdown.selectedIndex].value
       const link = document.getElementById("theme");
       link.href = theme;
     }
+
+    function toggleAlert(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        if (el.getAttribute("data-theme")) {
+          el.removeAttribute("data-theme")
+        } else {
+          el.setAttribute("data-theme", "alert")
+        }
+      }
+    }
   </script>
+
+  <style>
+    [data-theme="alert"] {
+      --primary: var(--error);
+    }
+  </style>
 </head>
 
 <body>
-  <div class="screen">
+  <div id="screen" class="screen">
     <div class="a frame partial mirror">
       <div class="title">Mirrored Partial Frame</div>
       <div class="content">
@@ -60,16 +77,16 @@
       <div class="title">Flipped Partial Frame</div>
       <div class="content">
         class=&quot;frame partial flip&quot;
+        <input type="text" value="Lorem" />
+        <input type="number" value="33" />
+        <input type="range" />
         <p>
-          <input type="text" value="Lorem" />
-          <input type="number" value="33" />
-          <input type="range" />
-          <br />
-          <input type="radio" />
-          <input type="radio" />
-          <br />
-          <input type="checkbox" />
-          <input type="checkbox" />
+          <input name="radiogrp" type="radio" selected />
+          <input name="radiogrp" type="radio" />
+        </p>
+        <p>
+          <input id="globalalert" type="checkbox" onclick="toggleAlert('screen')" />
+          <label for="globalalert">Activate Global Alert</label>
         </p>
       </div>
     </div>
@@ -79,10 +96,14 @@
         class=&quot;frame partial&quot;
       </div>
     </div>
-    <div class="f frame std sidebar">
+    <div id="frame" class="f frame std sidebar">
       <div class="title">Standard Frame</div>
       <div class="content">
         class=&quot;frame std sidebar&quot;
+        <p>
+          <input id="localalert" type="checkbox" onclick="toggleAlert('frame')" />
+          <label for="localalert">Activate Local Alert</label>
+        </p>
       </div>
       <div class="items">
         <button class="button">one</button>
@@ -99,4 +120,5 @@
     </div>
   </div>
 </body>
+
 </html>

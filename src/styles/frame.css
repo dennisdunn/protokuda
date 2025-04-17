@@ -64,8 +64,6 @@ Frame
 .frame>.content {
     overflow: hidden;
     margin: 2.5rem 1rem 1rem 1.5rem;
-    display: flex;
-    flex-flow: row wrap;
     color: var(--on-secondary)
 }
 
