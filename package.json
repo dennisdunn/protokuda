@@ -6,7 +6,7 @@
   "author": "Dennis Dunn <ansofive@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist && mkdir -p dist/themes && cat src/styles/*.css > dist/protokuda.css && cp src/themes/*.css dist/themes",
+    "build": "rm -rf dist && mkdir -p dist/themes && cat docs/styles/*.css > dist/protokuda.css && cp docs/themes/*.css dist/themes",
     "preversion": "git fetch --tags",
     "version": "npm run build && git add -A dist",
     "postversion": "git push  && git push --tags"
