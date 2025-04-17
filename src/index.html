@@ -5,13 +5,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="layout.css" />
-  <link rel="stylesheet" href="styles/variables.css" />
   <link rel="stylesheet" href="styles/body.css" />
   <link rel="stylesheet" href="styles/colors.css" />
   <link rel="stylesheet" href="styles/controls.css" />
   <link rel="stylesheet" href="styles/frame.css" />
-  <link rel="stylesheet" href="themes/atomictangerine.css" />
+  <link id="theme" rel="stylesheet" href="themes/redalert.css" />
   <title>Protokuda</title>
+
+  <script>
+    function changeTheme(dropdown){
+      const theme = dropdown.options[dropdown.selectedIndex].value
+      const link = document.getElementById("theme");
+      link.href = theme;
+    }
+  </script>
 </head>
 
 <body>
@@ -40,6 +47,13 @@
       <div class="title">Box Frame</div>
       <div class="status">
         <span>Stardate 2024.2.22</span>
+      </div>
+      <div class="content">
+        <select onchange="changeTheme(this);">
+          <option value="themes/greysmoke.css">Grey Smoke</option>
+          <option value="themes/atomictangerine.css">Atomic Tangerine</option>
+          <option value="themes/redalert.css">Red Alert</option>
+        </select>
       </div>
     </div>
     <div class="d frame partial flip">
@@ -85,5 +99,4 @@
     </div>
   </div>
 </body>
-
 </html>

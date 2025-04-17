@@ -2,22 +2,13 @@
 Controls
 */
 
-input {
+input,
+select {
+  outline: none;
   border: none;
-}
-
-input {
+  color: var(--on-accent);
+  background-color: var(--accent);
   accent-color: var(--accent);
-}
-
-input[type="text"] {
-  color: var(--on-accent);
-  background-color: var(--accent);
-}
-
-input[type="number"] {
-  color: var(--on-accent);
-  background-color: var(--accent);
 }
 
 input[type="number"] {
@@ -35,21 +26,24 @@ input[type="range"].vertical {
   direction: rtl;
 }
 
+input[type="button"],
 .button::-moz-focus-inner {
   border: 0;
 }
 
+input[type="button"],
 .button {
   outline: none;
   border: none;
   padding: 0.5rem;
   text-align: left;
-}
-
-.button {
+  color: var(--on-secondary);
   background-color: var(--secondary-light);
 }
 
+
+input[type="button"],
 .button:hover {
+  color: var(--on-secondary);
   background-color: var(--secondary-dark);
 }
