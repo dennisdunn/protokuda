@@ -527,56 +527,49 @@ Frame
 .frame {
     position: relative;
     border-style: solid;
-    border-radius: 1rem;
+    border-radius: 2rem;
     background-color: var(--backdrop-light);
     border-color: var(--primary);
 }
 
 .frame.std {
-    border-width: 1rem 0rem 1rem 1rem;
-    border-radius: 2rem;
+    border-width: 0.5rem 0rem 0.5rem 1.1rem;
 }
 
 .frame.std.mirror {
-    border-width: 1rem 1rem 1rem 0rem;
-    border-radius: 2rem;
+    border-width: 0.5rem 1.1rem 0.5rem 0rem;
 }
 
 .frame.bracket {
-    border-width: 0rem 1rem 0rem 1rem;
-    border-radius: 2rem;
+    border-width: 0rem 1.1rem 0rem 1.1rem;
 }
 
 .frame.partial {
-    border-width: 0rem 0rem 1rem 1rem;
-    border-radius: 2rem;
+    border-width: 0rem 0rem .5rem 1.1rem;
 }
 
 .frame.partial.mirror {
-    border-width: 0rem 1rem 1rem 0rem;
-    border-radius: 2rem;
+    border-width: 0rem 1.1rem 0.5rem 0rem;
 }
 
 .frame.partial.flip {
-    border-width: 1rem 0rem 0rem 1rem;
-    border-radius: 2rem;
+    border-width: 0.5rem 0rem 0rem 1.1rem;
 }
 
 .frame.partial.mirror.flip {
-    border-width: 1rem 1rem 0rem 0rem;
-    border-radius: 2rem;
+    border-width: 0.5rem 1.1rem 0rem 0rem;
 }
 
 .frame>.title {
     position: absolute;
-    right: 1.5rem;
+    right: 1.1rem;
     top: 0.5rem;
     color: var(--on-backdrop);
 }
 
 .frame>.label {
     position: absolute;
-    right: 1.5rem;
+    right: 1.1rem;
     bottom: 0.5rem;
     color: var(--on-backdrop);
     display: flex;
@@ -585,8 +578,8 @@ Frame
 
 .frame>.content {
     overflow: hidden;
-    margin: 2.5rem 1rem 1rem 1.5rem;
-    color: var(--on-secondary)
+    margin: 2.5rem 1.1rem 1.1rem 1.1rem;
+    color: var(--on-secondary);
 }
 
 .frame.sidebar {
@@ -621,4 +614,5 @@ Frame
     right: 2rem;
     display: flex;
     flex-flow: row nowrap;
+    color: var(--on-primary);
 }
