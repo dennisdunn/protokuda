@@ -55,7 +55,6 @@ Frame
 }
 
 .frame>.content {
-    overflow: hidden;
     margin: 2.5rem 1.1rem 1.1rem 1.1rem;
     color: var(--on-secondary);
 }
