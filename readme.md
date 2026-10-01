@@ -32,7 +32,7 @@ Without a theme, Protokuda uses the Grey Smoke colors. Other themes include:
 ## Protokuda CSS Classes
 ### Top-level Container
 The top level Protokuda container is the ```pk-screen``` class. It is a CSS grid; lay out your frames with your own
-`grid-template-areas` (see `docs/layout.css`).
+`grid-template-areas` (see `demo/layout.css`).
 
 ### Frames
 Frames provide a place for content to live.
@@ -91,7 +91,7 @@ frames; plain box frames keep thin, evenly rounded corners.
 Titles, labels, status text, and buttons are uppercase with `--pk-letter-spacing` (default `0.06em`).
 
 ## Dynamic Theme Selection
-The ```index.html``` file in the repository illustrates two techniques for
+The ```demo/index.html``` file in the repository illustrates two techniques for
 dynamically changing themes and theme components.
 
 The first is to change the ```href=``` attribute of the of the stylesheet link in
@@ -109,9 +109,28 @@ recolors every frame inside it, titles included.
 - The stylesheet no longer imports the Antonio font; add the `<link>` shown above.
 - `--sans-font-family` / `--mono-font-family` are now `--pk-sans-font-family` / `--pk-mono-font-family`.
 
+## Development
+The library source is in `src/`: `protokuda.css` is the entry point and `@import`s the
+other files into their cascade layers; themes are in `src/themes/`. The demo page is in `demo/`.
+
+```
+npm install
+npm run dev
+```
+`npm run dev` serves the demo at http://localhost:3000 straight from `src/` (browsers understand
+the layered `@import`s natively, so there is no build step). Edits to the CSS are injected
+without reloading the page.
+
+| Script | Does |
+| --- | --- |
+| `npm run dev` | Dev server with live CSS injection (browser-sync) |
+| `npm run build` | Bundles and minifies `src/` into `dist/` with Lightning CSS |
+| `npm run build:site` | `build`, then assembles the demo site in `_site/` |
+
 ## Releasing
-Releases are published to npm by GitHub Actions (`.github/workflows/publish.yml`) when a `vX.Y.Z` tag is pushed:
 ```
 npm version patch   # or minor / major
 ```
-This bumps `package.json`, commits, tags, and pushes. The workflow builds and publishes; jsDelivr and unpkg pick the new version up automatically.
+This bumps `package.json`, commits, tags, and pushes. The tag triggers `.github/workflows/publish.yml`,
+which publishes to npm and deploys the demo to GitHub Pages. jsDelivr and unpkg pick the new
+version up automatically. Running the workflow by hand from the Actions tab redeploys the site only.

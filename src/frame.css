@@ -1,0 +1,222 @@
+/**
+Frame
+
+Frame types set the edge widths logically:
+  --_head  top edge         --_foot  bottom edge
+  --_start elbow-side edge  --_end   opposite edge
+.pk-mirror swaps start/end and .pk-flip swaps head/foot.
+
+The inner corners (--pk-inner-radius) are drawn by ::before (the
+head/start corner) and ::after (the foot/start corner). The --_c*
+variables place them; --_top-bar is whichever edge is physically on top.
+*/
+.pk-frame {
+  --_head: var(--pk-frame-line);
+  --_foot: var(--pk-frame-line);
+  --_start: var(--pk-frame-line);
+  --_end: var(--pk-frame-line);
+  --_top-bar: var(--_head);
+
+  --_cl: 0;           /* corner left/right */
+  --_cr: auto;
+  --_cx: 100%;        /* gradient center x */
+  --_head-t: 0;       /* head corner top/bottom */
+  --_head-b: auto;
+  --_head-y: 100%;
+  --_foot-t: auto;    /* foot corner top/bottom */
+  --_foot-b: 0;
+  --_foot-y: 0%;
+
+  position: relative;
+  border-style: solid;
+  border-radius: var(--pk-frame-radius);
+  border-width: var(--_head) var(--_end) var(--_foot) var(--_start);
+  background-color: var(--pk-backdrop-light);
+  border-color: var(--pk-primary);
+}
+
+.pk-frame.pk-mirror {
+  --_cl: auto;
+  --_cr: 0;
+  --_cx: 0%;
+
+  border-width: var(--_head) var(--_start) var(--_foot) var(--_end);
+}
+
+.pk-frame.pk-flip {
+  --_top-bar: var(--_foot);
+  --_head-t: auto;
+  --_head-b: 0;
+  --_head-y: 0%;
+  --_foot-t: 0;
+  --_foot-b: auto;
+  --_foot-y: 100%;
+
+  border-width: var(--_foot) var(--_end) var(--_head) var(--_start);
+}
+
+.pk-frame.pk-mirror.pk-flip {
+  border-width: var(--_foot) var(--_start) var(--_head) var(--_end);
+}
+
+/** Frame types */
+.pk-frame.pk-std {
+  --_head: var(--pk-frame-bar);
+  --_foot: var(--pk-frame-bar);
+  --_start: var(--pk-frame-side);
+  --_end: 0rem;
+}
+
+.pk-frame.pk-partial {
+  --_head: 0rem;
+  --_foot: var(--pk-frame-bar);
+  --_start: var(--pk-frame-side);
+  --_end: 0rem;
+}
+
+.pk-frame.pk-bracket {
+  --_head: 0rem;
+  --_foot: 0rem;
+  --_start: var(--pk-frame-side);
+  --_end: var(--pk-frame-side);
+}
+
+/** Frame modifiers (after the types so they override them) */
+.pk-frame.pk-sidebar {
+  --_start: var(--pk-sidebar-width);
+}
+
+.pk-frame.pk-statusline {
+  --_foot: var(--pk-statusline-height);
+}
+
+/**
+* Inner corners. Each one is a square of primary with a quarter circle
+* cut out of it. Its size collapses to 0 when the adjoining bar is 0,
+* so corners only appear where two edges actually meet. Plain box frames
+* are skipped: their thin edges already get the browser's own inner curve,
+* and a larger one would bulge the corner.
+*/
+.pk-frame:is(.pk-std, .pk-partial)::before,
+.pk-frame:is(.pk-std, .pk-partial)::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  left: var(--_cl);
+  right: var(--_cr);
+  width: min(var(--pk-inner-radius), calc(var(--_start) * 1000));
+}
+
+.pk-frame:is(.pk-std, .pk-partial)::before {
+  top: var(--_head-t);
+  bottom: var(--_head-b);
+  height: min(var(--pk-inner-radius), calc(var(--_head) * 1000));
+  background: radial-gradient(circle at var(--_cx) var(--_head-y),
+      transparent calc(var(--pk-inner-radius) - 0.5px),
+      var(--pk-primary) var(--pk-inner-radius));
+}
+
+.pk-frame:is(.pk-std, .pk-partial)::after {
+  top: var(--_foot-t);
+  bottom: var(--_foot-b);
+  height: min(var(--pk-inner-radius), calc(var(--_foot) * 1000));
+  background: radial-gradient(circle at var(--_cx) var(--_foot-y),
+      transparent calc(var(--pk-inner-radius) - 0.5px),
+      var(--pk-primary) var(--pk-inner-radius));
+}
+
+/** Frame contents */
+.pk-frame > :is(.pk-title, .pk-label, .pk-status) {
+  text-transform: uppercase;
+  letter-spacing: var(--pk-letter-spacing);
+}
+
+.pk-frame > .pk-title,
+.pk-frame > .pk-label {
+  position: absolute;
+  right: var(--pk-frame-side);
+  color: var(--pk-on-backdrop, var(--pk-primary));
+}
+
+.pk-frame > .pk-title {
+  top: var(--pk-frame-bar);
+}
+
+.pk-frame > .pk-label {
+  bottom: var(--pk-frame-bar);
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.pk-frame.pk-mirror > :is(.pk-title, .pk-label) {
+  right: auto;
+  left: var(--pk-frame-side);
+}
+
+/**
+* When the frame has a top edge, the title is a nameplate on it: a block
+* of the frame color centered on the bar.
+* (Not when that edge is a flipped statusline; the status text lives there.)
+*/
+.pk-frame:not(.pk-bracket, .pk-partial, .pk-statusline.pk-flip) > .pk-title,
+.pk-frame.pk-partial.pk-flip:not(.pk-statusline) > .pk-title {
+  top: calc(var(--_top-bar) / -2);
+  right: var(--pk-frame-radius);
+  transform: translateY(-50%);
+  padding: 0.15em 0.4em;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--pk-on-primary);
+  background-color: var(--pk-primary);
+}
+
+.pk-frame.pk-mirror:not(.pk-bracket, .pk-partial, .pk-statusline.pk-flip) > .pk-title,
+.pk-frame.pk-partial.pk-flip.pk-mirror:not(.pk-statusline) > .pk-title {
+  right: auto;
+  left: var(--pk-frame-radius);
+}
+
+.pk-frame > .pk-content {
+  margin: 2.5rem var(--pk-frame-side) var(--pk-frame-side) var(--pk-frame-side);
+  color: var(--pk-text);
+}
+
+.pk-frame > .pk-items {
+  position: absolute;
+  top: var(--pk-frame-radius);
+  left: calc(-1 * var(--pk-sidebar-width));
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+}
+
+.pk-frame.pk-mirror > .pk-items {
+  left: auto;
+  right: calc(-1 * var(--pk-sidebar-width));
+}
+
+.pk-frame > .pk-items > .pk-button {
+  width: var(--pk-sidebar-width);
+  overflow: hidden;
+}
+
+.pk-frame > .pk-status {
+  position: absolute;
+  bottom: calc(-1 * var(--pk-statusline-height));
+  height: var(--pk-statusline-height);
+  right: var(--pk-frame-radius);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  color: var(--pk-on-primary);
+}
+
+.pk-frame.pk-mirror > .pk-status {
+  right: auto;
+  left: var(--pk-frame-radius);
+}
+
+.pk-frame.pk-flip > .pk-status {
+  bottom: auto;
+  top: calc(-1 * var(--pk-statusline-height));
+}

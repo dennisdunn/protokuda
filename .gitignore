@@ -24,3 +24,4 @@ yarn-error.log*
 
 # build output (published to npm, not committed)
 /dist
+/_site

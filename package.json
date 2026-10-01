@@ -23,10 +23,15 @@
     "dist"
   ],
   "scripts": {
-    "build": "rm -rf dist && mkdir -p dist/themes && cd docs/styles && cat tokens.css colors.css body.css controls.css frame.css screen.css alert.css > ../../dist/protokuda.css && cd ../.. && cp docs/themes/*.css dist/themes",
+    "dev": "browser-sync start --server demo --ss src --files \"demo/**/*\" \"src/**/*.css\" --no-notify --no-open --port 3000",
+    "build": "node scripts/build.mjs",
+    "build:site": "node scripts/build.mjs --site",
     "prepack": "npm run build",
     "preversion": "git fetch --tags",
     "postversion": "git push --follow-tags"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "lightningcss": "^1.33.0"
+  }
 }

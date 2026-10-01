@@ -1,0 +1,17 @@
+/**
+* Protokuda
+*
+* Layer order comes first so it holds no matter which file loads next.
+* Anything outside these layers (i.e. the host app's own CSS) wins.
+*/
+@layer protokuda.base, protokuda.theme;
+
+@import "tokens.css" layer(protokuda.base);
+@import "colors.css" layer(protokuda.base);
+@import "body.css" layer(protokuda.base);
+@import "controls.css" layer(protokuda.base);
+@import "frame.css" layer(protokuda.base);
+@import "screen.css" layer(protokuda.base);
+
+/* Not imported into a layer: it registers an @property, which has to sit outside one. It layers its own rules. */
+@import "alert.css";

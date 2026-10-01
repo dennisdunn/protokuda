@@ -1,0 +1,14 @@
+/**
+Body
+*/
+body {
+  margin: 0;
+  font-family: var(--pk-sans-font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--pk-backdrop);
+}
+
+code {
+  font-family: var(--pk-mono-font-family);
+}

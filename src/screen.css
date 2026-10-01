@@ -1,0 +1,13 @@
+/**
+Screen
+
+The top-level container. Arrange frames inside it with your own
+grid-template-areas (see docs/layout.css for an example).
+*/
+.pk-screen {
+  display: grid;
+  gap: 24px;
+  padding: 24px;
+  min-height: 100dvh;
+  box-sizing: border-box;
+}
