@@ -85,7 +85,8 @@ Frame geometry is tokenized too: `--pk-frame-line`, `--pk-frame-bar`, `--pk-fram
 
 `--pk-inner-radius` controls how far along the road to LCARS you are. At its default of `0rem`
 the inside of each elbow is square; around `1.5rem` it gets the familiar LCARS curve. It needs
-a unit, and can be set on the screen or on individual frames.
+a unit, and can be set on the screen or on individual frames. It applies to `pk-std` and `pk-partial`
+frames; plain box frames keep thin, evenly rounded corners.
 
 Titles, labels, status text, and buttons are uppercase with `--pk-letter-spacing` (default `0.06em`).
 

@@ -94,10 +94,12 @@ variables place them; --_top-bar is whichever edge is physically on top.
   /**
   * Inner corners. Each one is a square of primary with a quarter circle
   * cut out of it. Its size collapses to 0 when the adjoining bar is 0,
-  * so corners only appear where two edges actually meet.
+  * so corners only appear where two edges actually meet. Plain box frames
+  * are skipped: their thin edges already get the browser's own inner curve,
+  * and a larger one would bulge the corner.
   */
-  .pk-frame::before,
-  .pk-frame::after {
+  .pk-frame:is(.pk-std, .pk-partial)::before,
+  .pk-frame:is(.pk-std, .pk-partial)::after {
     content: "";
     position: absolute;
     pointer-events: none;
@@ -106,7 +108,7 @@ variables place them; --_top-bar is whichever edge is physically on top.
     width: min(var(--pk-inner-radius), calc(var(--_start) * 1000));
   }
 
-  .pk-frame::before {
+  .pk-frame:is(.pk-std, .pk-partial)::before {
     top: var(--_head-t);
     bottom: var(--_head-b);
     height: min(var(--pk-inner-radius), calc(var(--_head) * 1000));
@@ -115,7 +117,7 @@ variables place them; --_top-bar is whichever edge is physically on top.
         var(--pk-primary) var(--pk-inner-radius));
   }
 
-  .pk-frame::after {
+  .pk-frame:is(.pk-std, .pk-partial)::after {
     top: var(--_foot-t);
     bottom: var(--_foot-b);
     height: min(var(--pk-inner-radius), calc(var(--_foot) * 1000));
