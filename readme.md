@@ -161,3 +161,11 @@ npm version patch   # or minor / major
 This bumps `package.json`, commits, tags, and pushes. The tag triggers `.github/workflows/publish.yml`,
 which publishes to npm and deploys the demo to GitHub Pages. jsDelivr and unpkg pick the new
 version up automatically. Running the workflow by hand from the Actions tab redeploys the site only.
+
+## Acknowledgments
+Protokuda wouldn't exist without the designers and developers who have spent countless hours
+recreating LCARS for the web: the hand-built stylesheets, templates, frameworks, and fan sites
+that taught the rest of us how those elbows, bars, and buttons fit together. Your attention to
+detail and generosity in sharing your work made this project possible. Thank you.
+
+And, of course, to Michael Okuda, whose designs started it all and gave this project its name.
