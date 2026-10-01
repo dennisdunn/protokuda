@@ -4,14 +4,20 @@
 [Protokuda Example](https://dennisdunn.github.io/protokuda/index.html)
 ### Usage
 
-Load the Antonio font, the stylesheet, and optionally a theme. Pin the version so a new release can't change your layout unexpectedly.
+Load the Antonio font, the stylesheet, and optionally a theme. `@2` picks up any 2.x release; pin an exact version (e.g. `@2.0.0`) if you never want your layout to change unexpectedly.
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dennisdunn/protokuda@2.0.0/dist/protokuda.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dennisdunn/protokuda@2.0.0/dist/themes/atomictangerine.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/protokuda@2/dist/protokuda.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/protokuda@2/dist/themes/atomictangerine.min.css" />
 ```
+
+Or install it from npm:
+```
+npm install protokuda
+```
+and import `protokuda/dist/protokuda.css` and a theme from `protokuda/dist/themes/`.
 
 Without a theme, Protokuda uses the Grey Smoke colors. Other themes include:
 - Atomic Tangerine (atomictangerine.css)
@@ -85,7 +91,16 @@ The second technique is to use ```data-``` attributes along with CSS attribute s
 Overriding `--pk-primary` on any element recolors every frame inside it, titles included.
 
 ## Migrating From 1.x
+- 2.x is distributed from npm (`cdn.jsdelivr.net/npm/protokuda@...`). Existing 1.x links
+  (`cdn.jsdelivr.net/gh/dennisdunn/protokuda@1.x.x/...`) keep working.
 - Add `pk-` to every class name (`frame std sidebar` → `pk-frame pk-std pk-sidebar`, `screen` → `pk-screen`, `vertical` → `pk-vertical`).
 - Add `--pk-` to every custom property (`--primary` → `--pk-primary`); `--danub` is now `--pk-danube`.
 - The stylesheet no longer imports the Antonio font; add the `<link>` shown above.
 - `--sans-font-family` / `--mono-font-family` are now `--pk-sans-font-family` / `--pk-mono-font-family`.
+
+## Releasing
+Releases are published to npm by GitHub Actions (`.github/workflows/publish.yml`) when a `vX.Y.Z` tag is pushed:
+```
+npm version patch   # or minor / major
+```
+This bumps `package.json`, commits, tags, and pushes. The workflow builds and publishes; jsDelivr and unpkg pick the new version up automatically.

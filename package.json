@@ -1,15 +1,32 @@
 {
   "name": "protokuda",
   "version": "1.4.6",
-  "style": "dist/protokuda.css",
-  "repository": "git@github.com:dennisdunn/protokuda.git",
+  "description": "A Star Trek-ish stylesheet: what Michael Okuda might have drawn on his way to LCARS.",
+  "keywords": [
+    "css",
+    "lcars",
+    "star-trek",
+    "theme"
+  ],
+  "homepage": "https://dennisdunn.github.io/protokuda/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dennisdunn/protokuda.git"
+  },
+  "bugs": "https://github.com/dennisdunn/protokuda/issues",
   "author": "Dennis Dunn <ansofive@gmail.com>",
   "license": "MIT",
+  "style": "dist/protokuda.css",
+  "jsdelivr": "dist/protokuda.css",
+  "unpkg": "dist/protokuda.css",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rm -rf dist && mkdir -p dist/themes && cd docs/styles && cat tokens.css colors.css body.css controls.css frame.css screen.css > ../../dist/protokuda.css && cd ../.. && cp docs/themes/*.css dist/themes",
+    "prepack": "npm run build",
     "preversion": "git fetch --tags",
-    "version": "npm run build && git add -A dist",
-    "postversion": "git push  && git push --tags"
+    "postversion": "git push --follow-tags"
   },
   "devDependencies": {}
 }
