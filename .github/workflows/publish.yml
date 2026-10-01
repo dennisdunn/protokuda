@@ -51,24 +51,6 @@ jobs:
             echo "exists=true" >> "$GITHUB_OUTPUT"
           fi
 
-      # TEMPORARY: prints the identity this run presents to npm, to compare with the
-      # trusted publisher settings on npmjs.com. Only the decoded claims are shown,
-      # never the token. Remove once publishing from CI works.
-      - name: Show OIDC claims sent to npm
-        if: steps.published.outputs.exists != 'true'
-        run: |
-          node --input-type=module <<'EOF'
-          const url = `${process.env.ACTIONS_ID_TOKEN_REQUEST_URL}&audience=npm:registry.npmjs.org`;
-          const res = await fetch(url, {
-            headers: { Authorization: `Bearer ${process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}` },
-          });
-          const { value } = await res.json();
-          const claims = JSON.parse(Buffer.from(value.split('.')[1], 'base64url').toString());
-          const fields = ['repository_owner', 'repository', 'workflow_ref', 'job_workflow_ref',
-                          'ref', 'event_name', 'environment', 'aud'];
-          for (const f of fields) console.log(`${f.padEnd(18)} ${claims[f] ?? '(none)'}`);
-          EOF
-
       # prepack runs the build.
       - if: steps.published.outputs.exists != 'true'
         run: npm publish
