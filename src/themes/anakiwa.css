@@ -1,0 +1,28 @@
+/**
+Anakiwa
+*/
+.pk-theme-anakiwa {
+  --pk-backdrop: var(--pk-black);
+  --pk-backdrop-light: var(--pk-black);
+  --pk-backdrop-dark: var(--pk-black);
+  --pk-text: var(--pk-white);
+  --pk-primary: var(--pk-anakiwa);
+  --pk-primary-light: var(--pk-periwinkle);
+  --pk-primary-dark: var(--pk-danube);
+  --pk-on-primary: var(--pk-black);
+  --pk-secondary: var(--pk-danube);
+  --pk-secondary-light: var(--pk-danube);
+  --pk-secondary-dark: var(--pk-mariner);
+  --pk-on-secondary: var(--pk-black);
+  --pk-accent: var(--pk-golden-tanoi);
+  --pk-accent-light: var(--pk-pale-canary);
+  --pk-accent-dark: var(--pk-atomic-tangerine);
+  --pk-on-accent: var(--pk-black);
+  --pk-error: var(--pk-red-alert);
+  --pk-on-error: var(--pk-black);
+
+  --pk-button-bg: var(--pk-secondary-light);
+  --pk-button-fg: var(--pk-on-secondary);
+  --pk-button-hover-bg: var(--pk-secondary-dark);
+  --pk-button-hover-fg: var(--pk-white);
+}

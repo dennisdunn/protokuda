@@ -1,0 +1,28 @@
+/**
+Lilac
+*/
+.pk-theme-lilac {
+  --pk-backdrop: var(--pk-black);
+  --pk-backdrop-light: var(--pk-black);
+  --pk-backdrop-dark: var(--pk-black);
+  --pk-text: var(--pk-periwinkle);
+  --pk-primary: var(--pk-lilac);
+  --pk-primary-light: var(--pk-melrose);
+  --pk-primary-dark: var(--pk-lavender-purple);
+  --pk-on-primary: var(--pk-black);
+  --pk-secondary: var(--pk-blue-bell);
+  --pk-secondary-light: var(--pk-melrose);
+  --pk-secondary-dark: var(--pk-blue-bell);
+  --pk-on-secondary: var(--pk-black);
+  --pk-accent: var(--pk-orange-peel);
+  --pk-accent-light: var(--pk-golden-tanoi);
+  --pk-accent-dark: var(--pk-red-damask);
+  --pk-on-accent: var(--pk-black);
+  --pk-error: var(--pk-red-alert);
+  --pk-on-error: var(--pk-black);
+
+  --pk-button-bg: var(--pk-secondary-light);
+  --pk-button-fg: var(--pk-on-secondary);
+  --pk-button-hover-bg: var(--pk-hopbush);
+  --pk-button-hover-fg: var(--pk-on-secondary);
+}

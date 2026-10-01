@@ -2,9 +2,11 @@
 * Protokuda
 *
 * Layer order comes first so it holds no matter which file loads next.
-* Anything outside these layers (i.e. the host app's own CSS) wins.
+* Later layers win: themes override the base defaults, and states (alerts)
+* override themes. Anything outside these layers (i.e. the host app's own
+* CSS) wins over all of them.
 */
-@layer protokuda.base, protokuda.theme;
+@layer protokuda.base, protokuda.theme, protokuda.state;
 
 @import "tokens.css" layer(protokuda.base);
 @import "colors.css" layer(protokuda.base);
@@ -12,6 +14,15 @@
 @import "controls.css" layer(protokuda.base);
 @import "frame.css" layer(protokuda.base);
 @import "screen.css" layer(protokuda.base);
+
+/* Every theme as a class, e.g. .pk-theme-lilac, for theming part of the page. */
+@import "themes/greysmoke.css" layer(protokuda.theme);
+@import "themes/atomic.css" layer(protokuda.theme);
+@import "themes/goldentanoi.css" layer(protokuda.theme);
+@import "themes/anakiwa.css" layer(protokuda.theme);
+@import "themes/lilac.css" layer(protokuda.theme);
+@import "themes/husk.css" layer(protokuda.theme);
+@import "themes/navy.css" layer(protokuda.theme);
 
 /* Not imported into a layer: it registers an @property, which has to sit outside one. It layers its own rules. */
 @import "alert.css";

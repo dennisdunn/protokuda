@@ -1,27 +1,28 @@
 /**
 Grey Smoke (also the built-in default)
 */
-@layer protokuda.base, protokuda.theme;
+.pk-theme-greysmoke {
+  --pk-backdrop: var(--pk-gray);
+  --pk-backdrop-light: var(--pk-light-gray);
+  --pk-backdrop-dark: var(--pk-dark-gray);
+  --pk-text: var(--pk-black);
+  --pk-primary: var(--pk-black);
+  --pk-primary-light: var(--pk-gray);
+  --pk-primary-dark: var(--pk-black);
+  --pk-on-primary: var(--pk-white);
+  --pk-secondary: var(--pk-white);
+  --pk-secondary-light: var(--pk-white);
+  --pk-secondary-dark: var(--pk-light-gray);
+  --pk-on-secondary: var(--pk-black);
+  --pk-accent: var(--pk-gray);
+  --pk-accent-light: var(--pk-light-gray);
+  --pk-accent-dark: var(--pk-dark-gray);
+  --pk-on-accent: var(--pk-white);
+  --pk-error: var(--pk-red-alert);
+  --pk-on-error: var(--pk-black);
 
-@layer protokuda.theme {
-  :root {
-    --pk-backdrop: var(--pk-gray);
-    --pk-backdrop-light: var(--pk-light-gray);
-    --pk-backdrop-dark: var(--pk-dark-gray);
-    --pk-text: var(--pk-black);
-    --pk-primary: var(--pk-black);
-    --pk-primary-light: var(--pk-gray);
-    --pk-primary-dark: var(--pk-black);
-    --pk-on-primary: var(--pk-white);
-    --pk-secondary: var(--pk-white);
-    --pk-secondary-light: var(--pk-white);
-    --pk-secondary-dark: var(--pk-light-gray);
-    --pk-on-secondary: var(--pk-black);
-    --pk-accent: var(--pk-gray);
-    --pk-accent-light: var(--pk-light-gray);
-    --pk-accent-dark: var(--pk-dark-gray);
-    --pk-on-accent: var(--pk-white);
-    --pk-error: var(--pk-red-alert);
-    --pk-on-error: var(--pk-black);
-  }
+  --pk-button-bg: var(--pk-secondary-light);
+  --pk-button-fg: var(--pk-on-secondary);
+  --pk-button-hover-bg: var(--pk-secondary-dark);
+  --pk-button-hover-fg: var(--pk-on-secondary);
 }

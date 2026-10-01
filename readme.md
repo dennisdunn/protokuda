@@ -4,13 +4,13 @@
 [Protokuda Example](https://dennisdunn.github.io/protokuda/index.html)
 ### Usage
 
-Load the Antonio font, the stylesheet, and optionally a theme. `@2` picks up any 2.x release; pin an exact version (e.g. `@2.0.0`) if you never want your layout to change unexpectedly.
+Load the Antonio font, the stylesheet, and optionally a theme. `@3` picks up any 3.x release; pin an exact version (e.g. `@3.0.0`) if you never want your layout to change unexpectedly.
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/protokuda@2/dist/protokuda.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/protokuda@2/dist/themes/atomictangerine.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/protokuda@3/dist/protokuda.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/protokuda@3/dist/themes/atomic.min.css" />
 ```
 
 Or install it from npm:
@@ -19,14 +19,27 @@ npm install protokuda
 ```
 and import `protokuda/dist/protokuda.css` and a theme from `protokuda/dist/themes/`.
 
-Without a theme, Protokuda uses the Grey Smoke colors. Other themes include:
-- Atomic Tangerine (atomictangerine.css)
-- Grey Smoke (greysmoke.css)
-- Red Alert (redalert.css)
+Without a theme, Protokuda uses the Grey Smoke colors. The themes are:
+
+| Theme | File | Class |
+| --- | --- | --- |
+| Anakiwa | `anakiwa.css` | `pk-theme-anakiwa` |
+| Atomic | `atomic.css` | `pk-theme-atomic` |
+| Golden Tanoi | `goldentanoi.css` | `pk-theme-goldentanoi` |
+| Grey Smoke | `greysmoke.css` | `pk-theme-greysmoke` |
+| Husk | `husk.css` | `pk-theme-husk` |
+| Lilac | `lilac.css` | `pk-theme-lilac` |
+| Navy | `navy.css` | `pk-theme-navy` |
+
+Linking a theme file themes the whole page. Every theme is also built into `protokuda.css` as a class:
+put it on `<html>` to theme the page, or on a frame (or any element) to theme just that part:
+```html
+<div class="pk-frame pk-std pk-theme-lilac">...</div>
+```
 
 ## Playing Nicely With Your Own CSS
 - **Prefix.** Every class and custom property starts with `pk-` / `--pk-`, so it won't collide with names from your app or other libraries.
-- **Cascade layers.** All Protokuda rules live in `@layer protokuda.base` and themes in `@layer protokuda.theme`. Any of your own CSS that isn't in a layer beats Protokuda regardless of selector specificity, so overrides never need `!important`.
+- **Cascade layers.** Protokuda's rules live in `@layer protokuda.base`, themes in `@layer protokuda.theme`, and alerts in `@layer protokuda.state` (so an alert beats a frame's theme). Any of your own CSS that isn't in a layer beats Protokuda regardless of selector specificity, so overrides never need `!important`.
 - **Scoped controls.** Form controls are only styled inside a `.pk-screen`.
 
 ## Protokuda CSS Classes
@@ -94,20 +107,34 @@ Titles, labels, status text, and buttons are uppercase with `--pk-letter-spacing
 The ```demo/index.html``` file in the repository illustrates two techniques for
 dynamically changing themes and theme components.
 
-The first is to change the ```href=``` attribute of the of the stylesheet link in
-the documents header. See the ```changeTheme()``` handler.
+The first is to set a theme class: the ```setTheme()``` handler puts `pk-theme-<name>` on `<html>` for the
+page theme, or on the Standard Frame for a frame theme. (If you link a theme file instead, changing that
+`<link>`'s `href` switches the page theme.)
 
 The second technique is to toggle a class on part of the page; see the ```toggleAlert()``` handler, which toggles `pk-alert`.
 More generally, overriding `--pk-primary` (or any token) on an element, via a class or a `data-` attribute selector,
 recolors every frame inside it, titles included.
 
+## Migrating From 2.x
+Existing `@2` links keep working; 2.x stays on npm. To move to 3.x:
+- Change `@2` to `@3` in your CDN links.
+- **Atomic Tangerine is now Atomic:** `themes/atomictangerine.css` → `themes/atomic.css`.
+- **The Red Alert theme is gone.** For alerts, use the `pk-alert` class; for a color scheme, pick another theme.
+- **A third cascade layer.** Alerts moved from `protokuda.base` into a new `protokuda.state` layer, after
+  `protokuda.theme`, so an alert wins over a frame's theme. If your own CSS declares Protokuda's layer
+  order, add it: `@layer protokuda.base, protokuda.theme, protokuda.state;`.
+
+New in 3.0: the Anakiwa, Golden Tanoi, Husk, Lilac, and Navy themes, and theme classes
+(`pk-theme-<name>`) for theming a single frame or section.
+
 ## Migrating From 1.x
-- 2.x is distributed from npm (`cdn.jsdelivr.net/npm/protokuda@...`). Existing 1.x links
+- 2.x and later are distributed from npm (`cdn.jsdelivr.net/npm/protokuda@...`). Existing 1.x links
   (`cdn.jsdelivr.net/gh/dennisdunn/protokuda@1.x.x/...`) keep working.
 - Add `pk-` to every class name (`frame std sidebar` → `pk-frame pk-std pk-sidebar`, `screen` → `pk-screen`, `vertical` → `pk-vertical`).
 - Add `--pk-` to every custom property (`--primary` → `--pk-primary`); `--danub` is now `--pk-danube`.
 - The stylesheet no longer imports the Antonio font; add the `<link>` shown above.
 - `--sans-font-family` / `--mono-font-family` are now `--pk-sans-font-family` / `--pk-mono-font-family`.
+- Then follow "Migrating From 2.x" above.
 
 ## Development
 The library source is in `src/`: `protokuda.css` is the entry point and `@import`s the

@@ -10,15 +10,35 @@
   <!-- In development this is src/protokuda.css; on the published site it is the built bundle. -->
   <link rel="stylesheet" href="protokuda.css" />
   <link rel="stylesheet" href="layout.css" />
-  <link id="theme" rel="stylesheet" href="themes/greysmoke.css" />
   <title>Protokuda</title>
 
   <script>
-    function changeTheme(dropdown) {
-      const theme = dropdown.options[dropdown.selectedIndex].value
-      const link = document.getElementById("theme");
-      link.href = theme;
+    const THEMES = {
+      greysmoke: "Grey Smoke",
+      atomic: "Atomic",
+      goldentanoi: "Golden Tanoi",
+      anakiwa: "Anakiwa",
+      lilac: "Lilac",
+      husk: "Husk",
+      navy: "Navy",
+    };
+
+    // Every theme is also a class (.pk-theme-<name>). On <html> it themes the page;
+    // on any other element it themes just that part.
+    function setTheme(el, name) {
+      el.classList.remove(...[...el.classList].filter((c) => c.startsWith("pk-theme-")));
+      if (name) el.classList.add(`pk-theme-${name}`);
     }
+
+    function fillThemeList(select, firstOption) {
+      if (firstOption) select.add(new Option(firstOption, ""));
+      for (const [name, label] of Object.entries(THEMES)) select.add(new Option(label, name));
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      fillThemeList(document.getElementById("themelist"));
+      fillThemeList(document.getElementById("framethemelist"), "Same as page");
+    });
 
     function toggleAlert(id) {
       document.getElementById(id)?.classList.toggle("pk-alert");
@@ -59,11 +79,7 @@
       </div>
       <div class="pk-content">
         <label for="themelist">Select Theme</label>
-        <select id="themelist" onchange="changeTheme(this);">
-          <option value="themes/greysmoke.css" checked>Grey Smoke</option>
-          <option value="themes/atomictangerine.css">Atomic Tangerine</option>
-          <option value="themes/redalert.css">Red Alert</option>
-        </select>
+        <select id="themelist" onchange="setTheme(document.documentElement, this.value);"></select>
         <p>
           <label for="innerradius">Inner Radius</label>
           <input id="innerradius" type="range" min="0" max="2" step="0.25" value="0" oninput="setInnerRadius(this);" />
@@ -100,6 +116,10 @@
         <p>
           <input id="localalert" type="checkbox" onclick="toggleAlert('frame')" />
           <label for="localalert">Activate Local Alert</label>
+        </p>
+        <p>
+          <label for="framethemelist">Frame Theme</label>
+          <select id="framethemelist" onchange="setTheme(document.getElementById('frame'), this.value);"></select>
         </p>
       </div>
       <div class="pk-items">

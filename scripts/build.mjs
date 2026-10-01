@@ -12,27 +12,40 @@ const dist = path.join(root, 'dist');
 const site = path.join(root, '_site');
 
 const minName = (file) => file.replace(/\.css$/, '.min.css');
+const cssFiles = async (dir) => (await readdir(dir)).filter((f) => f.endsWith('.css'));
+
+const layerOrder = '@layer protokuda.base, protokuda.theme, protokuda.state;';
+
+// Theme sources are `.pk-theme-<name> { ... }` rules, bundled into protokuda.css
+// as classes. The standalone dist/themes/<name>.css applies the same tokens to
+// the whole page, so it swaps the class selector for :root.
+function pageTheme(source, name) {
+  const tokens = source.replace(`.pk-theme-${name}`, ':root');
+  return `${layerOrder}\n\n@layer protokuda.theme {\n${tokens}\n}\n`;
+}
+
+async function writeTheme(file, code, filename) {
+  for (const minify of [false, true]) {
+    const out = transform({ filename, code: Buffer.from(code), minify }).code;
+    await writeFile(path.join(dist, 'themes', minify ? minName(file) : file), out);
+  }
+}
 
 async function buildLibrary() {
   await rm(dist, { recursive: true, force: true });
   await mkdir(path.join(dist, 'themes'), { recursive: true });
 
-  // The entry file @imports the parts; bundling inlines them inside their layers.
+  // The entry file @imports the parts and themes; bundling inlines them inside their layers.
   const entry = path.join(src, 'protokuda.css');
   for (const minify of [false, true]) {
     const { code } = bundle({ filename: entry, minify });
     await writeFile(path.join(dist, minify ? 'protokuda.min.css' : 'protokuda.css'), code);
   }
 
-  // Themes are standalone stylesheets, loaded alongside the main one.
-  const themes = (await readdir(path.join(src, 'themes'))).filter((f) => f.endsWith('.css'));
-  for (const theme of themes) {
-    const filename = path.join(src, 'themes', theme);
-    const code = await readFile(filename);
-    for (const minify of [false, true]) {
-      const out = transform({ filename, code, minify }).code;
-      await writeFile(path.join(dist, 'themes', minify ? minName(theme) : theme), out);
-    }
+  const themes = await cssFiles(path.join(src, 'themes'));
+  for (const file of themes) {
+    const filename = path.join(src, 'themes', file);
+    await writeTheme(file, pageTheme(await readFile(filename, 'utf8'), path.basename(file, '.css')), filename);
   }
 
   console.log(`Built dist/ (protokuda.css + ${themes.length} themes)`);

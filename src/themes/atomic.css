@@ -1,0 +1,28 @@
+/**
+Atomic
+*/
+.pk-theme-atomic {
+  --pk-backdrop: var(--pk-black);
+  --pk-backdrop-light: var(--pk-black);
+  --pk-backdrop-dark: var(--pk-black);
+  --pk-text: var(--pk-white);
+  --pk-primary: #ff9900;
+  --pk-primary-light: #ffc164;
+  --pk-primary-dark: #9b5d00;
+  --pk-on-primary: var(--pk-black);
+  --pk-secondary: #2419b2;
+  --pk-secondary-light: #655ec5;
+  --pk-secondary-dark: #120b6c;
+  --pk-on-secondary: var(--pk-white);
+  --pk-accent: #00aa72;
+  --pk-accent-light: #4bbf99;
+  --pk-accent-dark: #006746;
+  --pk-on-accent: var(--pk-secondary);
+  --pk-error: var(--pk-red-alert);
+  --pk-on-error: var(--pk-black);
+
+  --pk-button-bg: var(--pk-secondary-light);
+  --pk-button-fg: var(--pk-on-secondary);
+  --pk-button-hover-bg: var(--pk-secondary-dark);
+  --pk-button-hover-fg: var(--pk-primary);
+}

@@ -1,0 +1,28 @@
+/**
+Navy
+*/
+.pk-theme-navy {
+  --pk-backdrop: var(--pk-black);
+  --pk-backdrop-light: var(--pk-navy-blue);
+  --pk-backdrop-dark: var(--pk-black);
+  --pk-text: var(--pk-periwinkle);
+  --pk-primary: var(--pk-dodger-blue);
+  --pk-primary-light: var(--pk-anakiwa);
+  --pk-primary-dark: var(--pk-dodger-blue-alt);
+  --pk-on-primary: var(--pk-black);
+  --pk-secondary: var(--pk-anakiwa);
+  --pk-secondary-light: var(--pk-periwinkle);
+  --pk-secondary-dark: var(--pk-anakiwa);
+  --pk-on-secondary: var(--pk-navy-blue);
+  --pk-accent: var(--pk-golden-tanoi);
+  --pk-accent-light: var(--pk-pale-canary);
+  --pk-accent-dark: var(--pk-atomic-tangerine);
+  --pk-on-accent: var(--pk-navy-blue);
+  --pk-error: var(--pk-red-alert);
+  --pk-on-error: var(--pk-black);
+
+  --pk-button-bg: var(--pk-secondary-light);
+  --pk-button-fg: var(--pk-on-secondary);
+  --pk-button-hover-bg: var(--pk-secondary-dark);
+  --pk-button-hover-fg: var(--pk-on-secondary);
+}

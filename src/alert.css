@@ -2,6 +2,7 @@
 Alert
 
 Add .pk-alert to a frame (local alert) or to the screen (global alert).
+It lives in the protokuda.state layer so it wins over a frame-level theme.
 Primary switches to the error color and pulses, unless the viewer
 prefers reduced motion.
 
@@ -13,9 +14,14 @@ The pulse animates a registered property, which can't live in a layer.
   initial-value: 100%;
 }
 
-@layer protokuda.base {
-  .pk-alert {
+@layer protokuda.state {
+  /* Themed elements inside an alert set their own primary, so they need the override too. */
+  .pk-alert,
+  .pk-alert [class*="pk-theme-"] {
     --pk-primary: color-mix(in srgb, var(--pk-error) var(--pk-alert-mix), var(--pk-backdrop));
+  }
+
+  .pk-alert {
     animation: pk-alert-pulse 1.2s ease-in-out infinite alternate;
   }
 
