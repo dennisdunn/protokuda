@@ -155,7 +155,8 @@ variables place them; --_top-bar is whichever edge is physically on top.
   }
 
   /**
-  * When the frame has a top edge, the title sits in a gap cut into it.
+  * When the frame has a top edge, the title is a nameplate on it: a block
+  * of the frame color centered on the bar.
   * (Not when that edge is a flipped statusline; the status text lives there.)
   */
   .pk-frame:not(.pk-bracket, .pk-partial, .pk-statusline.pk-flip) > .pk-title,
@@ -163,10 +164,11 @@ variables place them; --_top-bar is whichever edge is physically on top.
     top: calc(var(--_top-bar) / -2);
     right: var(--pk-frame-radius);
     transform: translateY(-50%);
-    padding-inline: 0.4em;
+    padding: 0.15em 0.4em;
     line-height: 1;
     white-space: nowrap;
-    background: linear-gradient(var(--pk-backdrop), var(--pk-backdrop)) center / 100% var(--_top-bar) no-repeat;
+    color: var(--pk-on-primary);
+    background-color: var(--pk-primary);
   }
 
   .pk-frame.pk-mirror:not(.pk-bracket, .pk-partial, .pk-statusline.pk-flip) > .pk-title,

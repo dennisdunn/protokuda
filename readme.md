@@ -51,7 +51,7 @@ Frames provide a place for content to live.
 
 #### Frame Contents
 Each frame can have content identified by the following classes:
-- ```pk-title``` Text displayed in the upper-right of the frame. When the frame has a top edge, the title sits in a gap cut into it.
+- ```pk-title``` Text displayed in the upper-right of the frame. When the frame has a top edge, the title becomes a nameplate on it, in the frame color with `--pk-on-primary` text.
 - ```pk-label``` Content displayed in the lower-right of the frame.
 - ```pk-content``` The frames main content.
 - ```pk-items``` The items to be rendered in the sidebar.
