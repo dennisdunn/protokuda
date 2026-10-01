@@ -1,452 +1,454 @@
 /**
 * Colors
 */
-:root {
-  --white: #fff !important;
-  --black: #000 !important;
-  --gray: #789 !important;
-  --light-gray: #d3d3d3 !important;
-  --dark-gray: #a9a9a9 !important;
-  --pale-canary: #ff9 !important;
-  --golden-tanoi: #fc6 !important;
-  --neon-carrot: #f93 !important;
-  --eggplant: #646 !important;
-  --lilac: #c9c !important;
-  --anakiwa: #9cf !important;
-  --mariner: #36c !important;
-  --bahama-blue: #069 !important;
-  --red-alert: #e10 !important;
-  --blue-bell: #99c !important;
-  --melrose: #99f !important;
-  --hopbush: #c69 !important;
-  --chestnut-rose: #c66 !important;
-  --orange-peel: #f96 !important;
-  --atomic-tangerine: #f90 !important;
-  --danub: #68c !important;
-  --indigo: #45b !important;
-  --lavender-purple: #97a !important;
-  --cosmic: #746 !important;
-  --red-damask: #d64 !important;
-  --medium-carmine: #a53 !important;
-  --bourbon: #b62 !important;
-  --sandy-brown: #e95 !important;
-  --periwinkle: #cdf !important;
-  --dodger-blue: #59f !important;
-  --dodger-blue-alt: #36f !important;
-  --blue: #01e !important;
-  --navy-blue: #008 !important;
-  --husk: #ba5 !important;
-  --rust: #b41 !important;
-  --tamarillo: #821 !important;
-}
-
-/**
-* Color classes
-*/
-.gray-bg {
-  background-color: var(--gray);
-}
-
-.white-bg {
-  background-color: var(--white);
-}
-
-.black-bg {
-  background-color: var(--black);
-}
-
-.pale-canary-bg {
-  background-color: var(--pale-canary);
-}
-
-.golden-tanoi-bg {
-  background-color: var(--golden-tanoi);
-}
-
-.neon-carrot-bg {
-  background-color: var(--neon-carrot);
-}
-
-.eggplant-bg {
-  background-color: var(--eggplant);
-}
-
-.lilac-bg {
-  background-color: var(--lilac);
-}
-
-.anakiwa-bg {
-  background-color: var(--anakiwa);
-}
-
-.mariner-bg {
-  background-color: var(--mariner);
-}
-
-.bahama-blue-bg {
-  background-color: var(--bahama-blue);
-}
-
-.red-alert-bg {
-  background-color: var(--red-alert);
-}
-
-.blue-bell-bg {
-  background-color: var(--blue-bell);
-}
-
-.melrose-bg {
-  background-color: var(--melrose);
-}
-
-.hopbush-bg {
-  background-color: var(--hopbush);
-}
-
-.chestnut-rose-bg {
-  background-color: var(--chestnut-rose);
-}
-
-.orange-peel-bg {
-  background-color: var(--orange-peel);
-}
-
-.atomic-tangerine-bg {
-  background-color: var(--atomic-tangerine);
-}
-
-.danub-bg {
-  background-color: var(--danub);
-}
-
-.indigo-bg {
-  background-color: var(--indigo);
-}
-
-.lavender-purple-bg {
-  background-color: var(--lavender-purple);
-}
-
-.cosmic-bg {
-  background-color: var(--cosmic);
-}
-
-.red-damask-bg {
-  background-color: var(--red-damask);
-}
-
-.medium-carmine-bg {
-  background-color: var(--medium-carmine);
-}
-
-.bourbon-bg {
-  background-color: var(--bourbon);
-}
-
-.sandy-brown-bg {
-  background-color: var(--sandy-brown);
-}
-
-.periwinkle-bg {
-  background-color: var(--periwinkle);
-}
-
-.dodger-blue-bg {
-  background-color: var(--dodger-blue);
-}
-
-.dodger-blue-alt-bg {
-  background-color: var(--dodger-blue-alt);
-}
-
-.blue-bg {
-  background-color: var(--blue);
-}
-
-.navy-blue-bg {
-  background-color: var(--navy-blue);
-}
-
-.husk-bg {
-  background-color: var(--husk);
-}
-
-.rust-bg {
-  background-color: var(--rust);
-}
-
-.tamarillo-bg {
-  background-color: var(--tamarillo);
-}
-
-.gray-border {
-  border-color: var(--gray);
-}
-
-.white-border {
-  border-color: var(--white);
-}
-
-.black-border {
-  border-color: var(--black);
-}
-
-.pale-canary-border {
-  border-color: var(--pale-canary);
-}
-
-.golden-tanoi-border {
-  border-color: var(--golden-tanoi);
-}
-
-.neon-carrot-border {
-  border-color: var(--neon-carrot);
-}
-
-.eggplant-border {
-  border-color: var(--eggplant);
-}
-
-.lilac-border {
-  border-color: var(--lilac);
-}
-
-.anakiwa-border {
-  border-color: var(--anakiwa);
-}
-
-.mariner-border {
-  border-color: var(--mariner);
-}
-
-.bahama-blue-border {
-  border-color: var(--bahama-blue);
-}
-
-.red-alert-border {
-  border-color: var(--red-alert);
-}
-
-.blue-bell-border {
-  border-color: var(--blue-bell);
-}
-
-.melrose-border {
-  border-color: var(--melrose);
-}
-
-.hopbush-border {
-  border-color: var(--hopbush);
-}
-
-.chestnut-rose-border {
-  border-color: var(--chestnut-rose);
-}
-
-.orange-peel-border {
-  border-color: var(--orange-peel);
-}
-
-.atomic-tangerine-border {
-  border-color: var(--atomic-tangerine);
-}
-
-.danub-border {
-  border-color: var(--danub);
-}
-
-.indigo-border {
-  border-color: var(--indigo);
-}
-
-.lavender-purple-border {
-  border-color: var(--lavender-purple);
-}
-
-.cosmic-border {
-  border-color: var(--cosmic);
-}
-
-.red-damask-border {
-  border-color: var(--red-damask);
-}
-
-.medium-carmine-border {
-  border-color: var(--medium-carmine);
-}
-
-.bourbon-border {
-  border-color: var(--bourbon);
-}
-
-.sandy-brown-border {
-  border-color: var(--sandy-brown);
-}
-
-.periwinkle-border {
-  border-color: var(--periwinkle);
-}
-
-.dodger-blue-border {
-  border-color: var(--dodger-blue);
-}
-
-.dodger-blue-alt-border {
-  border-color: var(--dodger-blue-alt);
-}
-
-.blue-border {
-  border-color: var(--blue);
-}
-
-.navy-blue-border {
-  border-color: var(--navy-blue);
-}
-
-.husk-border {
-  border-color: var(--husk);
-}
-
-.rust-border {
-  border-color: var(--rust);
-}
-
-.tamarillo-border {
-  border-color: var(--tamarillo);
-}
-
-.gray-color {
-  color: var(--gray);
-}
-
-.white-color {
-  color: var(--white);
-}
-
-.black-color {
-  color: var(--black);
-}
-
-.pale-canary-color {
-  color: var(--pale-canary);
-}
-
-.golden-tanoi-color {
-  color: var(--golden-tanoi);
-}
-
-.neon-carrot-color {
-  color: var(--neon-carrot);
-}
-
-.eggplant-color {
-  color: var(--eggplant);
-}
-
-.lilac-color {
-  color: var(--lilac);
-}
-
-.anakiwa-color {
-  color: var(--anakiwa);
-}
-
-.mariner-color {
-  color: var(--mariner);
-}
-
-.bahama-blue-color {
-  color: var(--bahama-blue);
-}
-
-.red-alert-color {
-  color: var(--red-alert);
-}
-
-.blue-bell-color {
-  color: var(--blue-bell);
-}
-
-.melrose-color {
-  color: var(--melrose);
-}
-
-.hopbush-color {
-  color: var(--hopbush);
-}
-
-.chestnut-rose-color {
-  color: var(--chestnut-rose);
-}
-
-.orange-peel-color {
-  color: var(--orange-peel);
-}
-
-.atomic-tangerine-color {
-  color: var(--atomic-tangerine);
-}
-
-.danub-color {
-  color: var(--danub);
-}
-
-.indigo-color {
-  color: var(--indigo);
-}
-
-.lavender-purple-color {
-  color: var(--lavender-purple);
-}
-
-.cosmic-color {
-  color: var(--cosmic);
-}
-
-.red-damask-color {
-  color: var(--red-damask);
-}
-
-.medium-carmine-color {
-  color: var(--medium-carmine);
-}
-
-.bourbon-color {
-  color: var(--bourbon);
-}
-
-.sandy-brown-color {
-  color: var(--sandy-brown);
-}
-
-.periwinkle-color {
-  color: var(--periwinkle);
-}
-
-.dodger-blue-color {
-  color: var(--dodger-blue);
-}
-
-.dodger-blue-alt-color {
-  color: var(--dodger-blue-alt);
-}
-
-.blue-color {
-  color: var(--blue);
-}
-
-.navy-blue-color {
-  color: var(--navy-blue);
-}
-
-.husk-color {
-  color: var(--husk);
-}
-
-.rust-color {
-  color: var(--rust);
-}
-
-.tamarillo-color {
-  color: var(--tamarillo);
+@layer protokuda.base {
+  :root {
+    --pk-white: #fff;
+    --pk-black: #000;
+    --pk-gray: #789;
+    --pk-light-gray: #d3d3d3;
+    --pk-dark-gray: #a9a9a9;
+    --pk-pale-canary: #ff9;
+    --pk-golden-tanoi: #fc6;
+    --pk-neon-carrot: #f93;
+    --pk-eggplant: #646;
+    --pk-lilac: #c9c;
+    --pk-anakiwa: #9cf;
+    --pk-mariner: #36c;
+    --pk-bahama-blue: #069;
+    --pk-red-alert: #e10;
+    --pk-blue-bell: #99c;
+    --pk-melrose: #99f;
+    --pk-hopbush: #c69;
+    --pk-chestnut-rose: #c66;
+    --pk-orange-peel: #f96;
+    --pk-atomic-tangerine: #f90;
+    --pk-danube: #68c;
+    --pk-indigo: #45b;
+    --pk-lavender-purple: #97a;
+    --pk-cosmic: #746;
+    --pk-red-damask: #d64;
+    --pk-medium-carmine: #a53;
+    --pk-bourbon: #b62;
+    --pk-sandy-brown: #e95;
+    --pk-periwinkle: #cdf;
+    --pk-dodger-blue: #59f;
+    --pk-dodger-blue-alt: #36f;
+    --pk-blue: #01e;
+    --pk-navy-blue: #008;
+    --pk-husk: #ba5;
+    --pk-rust: #b41;
+    --pk-tamarillo: #821;
+  }
+
+  /**
+  * Color classes
+  */
+  .pk-gray-bg {
+    background-color: var(--pk-gray);
+  }
+
+  .pk-white-bg {
+    background-color: var(--pk-white);
+  }
+
+  .pk-black-bg {
+    background-color: var(--pk-black);
+  }
+
+  .pk-pale-canary-bg {
+    background-color: var(--pk-pale-canary);
+  }
+
+  .pk-golden-tanoi-bg {
+    background-color: var(--pk-golden-tanoi);
+  }
+
+  .pk-neon-carrot-bg {
+    background-color: var(--pk-neon-carrot);
+  }
+
+  .pk-eggplant-bg {
+    background-color: var(--pk-eggplant);
+  }
+
+  .pk-lilac-bg {
+    background-color: var(--pk-lilac);
+  }
+
+  .pk-anakiwa-bg {
+    background-color: var(--pk-anakiwa);
+  }
+
+  .pk-mariner-bg {
+    background-color: var(--pk-mariner);
+  }
+
+  .pk-bahama-blue-bg {
+    background-color: var(--pk-bahama-blue);
+  }
+
+  .pk-red-alert-bg {
+    background-color: var(--pk-red-alert);
+  }
+
+  .pk-blue-bell-bg {
+    background-color: var(--pk-blue-bell);
+  }
+
+  .pk-melrose-bg {
+    background-color: var(--pk-melrose);
+  }
+
+  .pk-hopbush-bg {
+    background-color: var(--pk-hopbush);
+  }
+
+  .pk-chestnut-rose-bg {
+    background-color: var(--pk-chestnut-rose);
+  }
+
+  .pk-orange-peel-bg {
+    background-color: var(--pk-orange-peel);
+  }
+
+  .pk-atomic-tangerine-bg {
+    background-color: var(--pk-atomic-tangerine);
+  }
+
+  .pk-danube-bg {
+    background-color: var(--pk-danube);
+  }
+
+  .pk-indigo-bg {
+    background-color: var(--pk-indigo);
+  }
+
+  .pk-lavender-purple-bg {
+    background-color: var(--pk-lavender-purple);
+  }
+
+  .pk-cosmic-bg {
+    background-color: var(--pk-cosmic);
+  }
+
+  .pk-red-damask-bg {
+    background-color: var(--pk-red-damask);
+  }
+
+  .pk-medium-carmine-bg {
+    background-color: var(--pk-medium-carmine);
+  }
+
+  .pk-bourbon-bg {
+    background-color: var(--pk-bourbon);
+  }
+
+  .pk-sandy-brown-bg {
+    background-color: var(--pk-sandy-brown);
+  }
+
+  .pk-periwinkle-bg {
+    background-color: var(--pk-periwinkle);
+  }
+
+  .pk-dodger-blue-bg {
+    background-color: var(--pk-dodger-blue);
+  }
+
+  .pk-dodger-blue-alt-bg {
+    background-color: var(--pk-dodger-blue-alt);
+  }
+
+  .pk-blue-bg {
+    background-color: var(--pk-blue);
+  }
+
+  .pk-navy-blue-bg {
+    background-color: var(--pk-navy-blue);
+  }
+
+  .pk-husk-bg {
+    background-color: var(--pk-husk);
+  }
+
+  .pk-rust-bg {
+    background-color: var(--pk-rust);
+  }
+
+  .pk-tamarillo-bg {
+    background-color: var(--pk-tamarillo);
+  }
+
+  .pk-gray-border {
+    border-color: var(--pk-gray);
+  }
+
+  .pk-white-border {
+    border-color: var(--pk-white);
+  }
+
+  .pk-black-border {
+    border-color: var(--pk-black);
+  }
+
+  .pk-pale-canary-border {
+    border-color: var(--pk-pale-canary);
+  }
+
+  .pk-golden-tanoi-border {
+    border-color: var(--pk-golden-tanoi);
+  }
+
+  .pk-neon-carrot-border {
+    border-color: var(--pk-neon-carrot);
+  }
+
+  .pk-eggplant-border {
+    border-color: var(--pk-eggplant);
+  }
+
+  .pk-lilac-border {
+    border-color: var(--pk-lilac);
+  }
+
+  .pk-anakiwa-border {
+    border-color: var(--pk-anakiwa);
+  }
+
+  .pk-mariner-border {
+    border-color: var(--pk-mariner);
+  }
+
+  .pk-bahama-blue-border {
+    border-color: var(--pk-bahama-blue);
+  }
+
+  .pk-red-alert-border {
+    border-color: var(--pk-red-alert);
+  }
+
+  .pk-blue-bell-border {
+    border-color: var(--pk-blue-bell);
+  }
+
+  .pk-melrose-border {
+    border-color: var(--pk-melrose);
+  }
+
+  .pk-hopbush-border {
+    border-color: var(--pk-hopbush);
+  }
+
+  .pk-chestnut-rose-border {
+    border-color: var(--pk-chestnut-rose);
+  }
+
+  .pk-orange-peel-border {
+    border-color: var(--pk-orange-peel);
+  }
+
+  .pk-atomic-tangerine-border {
+    border-color: var(--pk-atomic-tangerine);
+  }
+
+  .pk-danube-border {
+    border-color: var(--pk-danube);
+  }
+
+  .pk-indigo-border {
+    border-color: var(--pk-indigo);
+  }
+
+  .pk-lavender-purple-border {
+    border-color: var(--pk-lavender-purple);
+  }
+
+  .pk-cosmic-border {
+    border-color: var(--pk-cosmic);
+  }
+
+  .pk-red-damask-border {
+    border-color: var(--pk-red-damask);
+  }
+
+  .pk-medium-carmine-border {
+    border-color: var(--pk-medium-carmine);
+  }
+
+  .pk-bourbon-border {
+    border-color: var(--pk-bourbon);
+  }
+
+  .pk-sandy-brown-border {
+    border-color: var(--pk-sandy-brown);
+  }
+
+  .pk-periwinkle-border {
+    border-color: var(--pk-periwinkle);
+  }
+
+  .pk-dodger-blue-border {
+    border-color: var(--pk-dodger-blue);
+  }
+
+  .pk-dodger-blue-alt-border {
+    border-color: var(--pk-dodger-blue-alt);
+  }
+
+  .pk-blue-border {
+    border-color: var(--pk-blue);
+  }
+
+  .pk-navy-blue-border {
+    border-color: var(--pk-navy-blue);
+  }
+
+  .pk-husk-border {
+    border-color: var(--pk-husk);
+  }
+
+  .pk-rust-border {
+    border-color: var(--pk-rust);
+  }
+
+  .pk-tamarillo-border {
+    border-color: var(--pk-tamarillo);
+  }
+
+  .pk-gray-color {
+    color: var(--pk-gray);
+  }
+
+  .pk-white-color {
+    color: var(--pk-white);
+  }
+
+  .pk-black-color {
+    color: var(--pk-black);
+  }
+
+  .pk-pale-canary-color {
+    color: var(--pk-pale-canary);
+  }
+
+  .pk-golden-tanoi-color {
+    color: var(--pk-golden-tanoi);
+  }
+
+  .pk-neon-carrot-color {
+    color: var(--pk-neon-carrot);
+  }
+
+  .pk-eggplant-color {
+    color: var(--pk-eggplant);
+  }
+
+  .pk-lilac-color {
+    color: var(--pk-lilac);
+  }
+
+  .pk-anakiwa-color {
+    color: var(--pk-anakiwa);
+  }
+
+  .pk-mariner-color {
+    color: var(--pk-mariner);
+  }
+
+  .pk-bahama-blue-color {
+    color: var(--pk-bahama-blue);
+  }
+
+  .pk-red-alert-color {
+    color: var(--pk-red-alert);
+  }
+
+  .pk-blue-bell-color {
+    color: var(--pk-blue-bell);
+  }
+
+  .pk-melrose-color {
+    color: var(--pk-melrose);
+  }
+
+  .pk-hopbush-color {
+    color: var(--pk-hopbush);
+  }
+
+  .pk-chestnut-rose-color {
+    color: var(--pk-chestnut-rose);
+  }
+
+  .pk-orange-peel-color {
+    color: var(--pk-orange-peel);
+  }
+
+  .pk-atomic-tangerine-color {
+    color: var(--pk-atomic-tangerine);
+  }
+
+  .pk-danube-color {
+    color: var(--pk-danube);
+  }
+
+  .pk-indigo-color {
+    color: var(--pk-indigo);
+  }
+
+  .pk-lavender-purple-color {
+    color: var(--pk-lavender-purple);
+  }
+
+  .pk-cosmic-color {
+    color: var(--pk-cosmic);
+  }
+
+  .pk-red-damask-color {
+    color: var(--pk-red-damask);
+  }
+
+  .pk-medium-carmine-color {
+    color: var(--pk-medium-carmine);
+  }
+
+  .pk-bourbon-color {
+    color: var(--pk-bourbon);
+  }
+
+  .pk-sandy-brown-color {
+    color: var(--pk-sandy-brown);
+  }
+
+  .pk-periwinkle-color {
+    color: var(--pk-periwinkle);
+  }
+
+  .pk-dodger-blue-color {
+    color: var(--pk-dodger-blue);
+  }
+
+  .pk-dodger-blue-alt-color {
+    color: var(--pk-dodger-blue-alt);
+  }
+
+  .pk-blue-color {
+    color: var(--pk-blue);
+  }
+
+  .pk-navy-blue-color {
+    color: var(--pk-navy-blue);
+  }
+
+  .pk-husk-color {
+    color: var(--pk-husk);
+  }
+
+  .pk-rust-color {
+    color: var(--pk-rust);
+  }
+
+  .pk-tamarillo-color {
+    color: var(--pk-tamarillo);
+  }
 }

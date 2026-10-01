@@ -1,0 +1,54 @@
+/**
+* Layer order. Declared first so it holds no matter which file loads next.
+* Anything outside these layers (i.e. the host app's own CSS) wins.
+*/
+@layer protokuda.base, protokuda.theme;
+
+/**
+* Tokens
+*/
+@layer protokuda.base {
+  :root {
+    /** Fonts */
+    --pk-sans-font-family: 'Antonio', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica', sans-serif;
+    --pk-mono-font-family: Menlo, Monaco, 'Courier New', monospace;
+
+    /** Frame geometry */
+    --pk-frame-line: 3px;          /* edges of a plain box frame */
+    --pk-frame-bar: 0.5rem;        /* top/bottom bars */
+    --pk-frame-side: 1.1rem;       /* side bars */
+    --pk-frame-radius: 2rem;
+    --pk-sidebar-width: 5rem;
+    --pk-statusline-height: 2rem;
+
+    /**
+    * Default colors (Grey Smoke). --pk-on-backdrop is deliberately left unset:
+    * when a theme doesn't set it, it follows --pk-primary at the point of use,
+    * so a local alert recolors titles and labels too.
+    */
+    --pk-backdrop: var(--pk-gray);
+    --pk-backdrop-light: var(--pk-light-gray);
+    --pk-backdrop-dark: var(--pk-dark-gray);
+    --pk-text: var(--pk-black);
+    --pk-primary: var(--pk-black);
+    --pk-primary-light: var(--pk-gray);
+    --pk-primary-dark: var(--pk-black);
+    --pk-on-primary: var(--pk-white);
+    --pk-secondary: var(--pk-white);
+    --pk-secondary-light: var(--pk-white);
+    --pk-secondary-dark: var(--pk-light-gray);
+    --pk-on-secondary: var(--pk-black);
+    --pk-accent: var(--pk-gray);
+    --pk-accent-light: var(--pk-light-gray);
+    --pk-accent-dark: var(--pk-dark-gray);
+    --pk-on-accent: var(--pk-white);
+    --pk-error: var(--pk-red-alert);
+    --pk-on-error: var(--pk-black);
+
+    /** Buttons */
+    --pk-button-bg: var(--pk-secondary-light);
+    --pk-button-fg: var(--pk-on-secondary);
+    --pk-button-hover-bg: var(--pk-secondary-dark);
+    --pk-button-hover-fg: var(--pk-on-secondary);
+  }
+}

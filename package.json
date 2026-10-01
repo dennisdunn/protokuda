@@ -1,12 +1,12 @@
 {
   "name": "protokuda",
   "version": "1.4.6",
-  "main": "index.js",
+  "style": "dist/protokuda.css",
   "repository": "git@github.com:dennisdunn/protokuda.git",
   "author": "Dennis Dunn <ansofive@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist && mkdir -p dist/themes && cat docs/styles/*.css > dist/protokuda.css && cp docs/themes/*.css dist/themes",
+    "build": "rm -rf dist && mkdir -p dist/themes && cd docs/styles && cat tokens.css colors.css body.css controls.css frame.css screen.css > ../../dist/protokuda.css && cd ../.. && cp docs/themes/*.css dist/themes",
     "preversion": "git fetch --tags",
     "version": "npm run build && git add -A dist",
     "postversion": "git push  && git push --tags"

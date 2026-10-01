@@ -1,27 +1,32 @@
 /**
+Atomic Tangerine
 */
-:root {
-    --backdrop: var(--black);
-    --backdrop-light: var(--black);
-    --backdrop-dark: var(--black);
-    --on-backdrop: var(--primary);
-    --primary: #ff9900;
-    --primary-light: #ffc164;
-    --primary-dark: #9b5d00;
-    --on-primary: var(--black);
-    --secondary: #2419b2;
-    --secondary-light: #655ec5;
-    --secondary-dark: #120b6c;
-    --on-secondary: var(--white);
-    --accent: #00aa72;
-    --accent-light: #4bbf99;
-    --accent-dark: #006746;
-    --on-accent: var(--secondary);
-    --error: var(--red-alert);
-    --on-error: var(--black);
-}
+@layer protokuda.base, protokuda.theme;
 
-input[type="button"],
-.button:hover {
-    color: var(--primary);
+@layer protokuda.theme {
+  :root {
+    --pk-backdrop: var(--pk-black);
+    --pk-backdrop-light: var(--pk-black);
+    --pk-backdrop-dark: var(--pk-black);
+    --pk-text: var(--pk-white);
+    --pk-primary: #ff9900;
+    --pk-primary-light: #ffc164;
+    --pk-primary-dark: #9b5d00;
+    --pk-on-primary: var(--pk-black);
+    --pk-secondary: #2419b2;
+    --pk-secondary-light: #655ec5;
+    --pk-secondary-dark: #120b6c;
+    --pk-on-secondary: var(--pk-white);
+    --pk-accent: #00aa72;
+    --pk-accent-light: #4bbf99;
+    --pk-accent-dark: #006746;
+    --pk-on-accent: var(--pk-secondary);
+    --pk-error: var(--pk-red-alert);
+    --pk-on-error: var(--pk-black);
+
+    --pk-button-bg: var(--pk-secondary-light);
+    --pk-button-fg: var(--pk-on-secondary);
+    --pk-button-hover-bg: var(--pk-secondary-dark);
+    --pk-button-hover-fg: var(--pk-primary);
+  }
 }

@@ -1,27 +1,32 @@
+/**
+Red Alert
+*/
+@layer protokuda.base, protokuda.theme;
 
-:root {
-    --backdrop: var(--black);
-    --backdrop-light: var(--black);
-    --backdrop-dark: var(--black);
-    --on-backdrop: var(--primary);
-    --primary:  #d82c2c;
-    --primary-light: var(--gray);
-    --primary-dark: var(--black);
-    --on-primary:  #f1e8c6;
-    --secondary:  rgb(240, 90, 40);
-    --secondary-light: #f37b53;
-    --secondary-dark: #e54510;
-    --on-secondary:  #f1e8c6;
-    --accent: #f6b83c;
-    --accent-light: var(--light-gray);
-    --accent-dark: var(--dark-gray);
-    --on-accent:  #913d3b;
-    --error: var(--red-alert);
-    --on-error: var(--black);
-}
+@layer protokuda.theme {
+  :root {
+    --pk-backdrop: var(--pk-black);
+    --pk-backdrop-light: var(--pk-black);
+    --pk-backdrop-dark: var(--pk-black);
+    --pk-text: #f1e8c6;
+    --pk-primary: #d82c2c;
+    --pk-primary-light: var(--pk-gray);
+    --pk-primary-dark: var(--pk-black);
+    --pk-on-primary: #f1e8c6;
+    --pk-secondary: rgb(240, 90, 40);
+    --pk-secondary-light: #f37b53;
+    --pk-secondary-dark: #e54510;
+    --pk-on-secondary: #f1e8c6;
+    --pk-accent: #f6b83c;
+    --pk-accent-light: var(--pk-light-gray);
+    --pk-accent-dark: var(--pk-dark-gray);
+    --pk-on-accent: #913d3b;
+    --pk-error: var(--pk-red-alert);
+    --pk-on-error: var(--pk-black);
 
-input[type="button"],
-.button {
-    color:var(--backdrop);
-    background-color:var(--accent);
+    --pk-button-bg: var(--pk-accent);
+    --pk-button-fg: var(--pk-backdrop);
+    --pk-button-hover-bg: var(--pk-secondary-dark);
+    --pk-button-hover-fg: var(--pk-on-secondary);
+  }
 }
