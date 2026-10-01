@@ -51,15 +51,18 @@ Frames provide a place for content to live.
 
 #### Frame Contents
 Each frame can have content identified by the following classes:
-- ```pk-title``` Text displayed in the upper-right of the frame.
+- ```pk-title``` Text displayed in the upper-right of the frame. When the frame has a top edge, the title sits in a gap cut into it.
 - ```pk-label``` Content displayed in the lower-right of the frame.
 - ```pk-content``` The frames main content.
 - ```pk-items``` The items to be rendered in the sidebar.
 - ```pk-status``` The text for the status line.
 
 ### Controls
-- ```pk-button``` A sidebar-style button.
+- ```pk-button``` A sidebar-style button. Give it a `data-code` attribute (e.g. `data-code="47-1138"`) to show a code number in its lower-right corner.
 - ```pk-vertical``` On an `<input type="range">`, makes it vertical.
+
+### Alerts
+- ```pk-alert``` On a frame (local alert) or the screen (global alert): switches primary to `--pk-error` and pulses it. The pulse is disabled for viewers who prefer reduced motion.
 
 ### Color Utilities
 Each palette color has `pk-<name>-bg`, `pk-<name>-border`, and `pk-<name>-color` classes, e.g. `pk-neon-carrot-bg`.
@@ -80,6 +83,12 @@ Themes are just sets of custom properties. The main ones:
 Frame geometry is tokenized too: `--pk-frame-line`, `--pk-frame-bar`, `--pk-frame-side`,
 `--pk-frame-radius`, `--pk-sidebar-width`, and `--pk-statusline-height`.
 
+`--pk-inner-radius` controls how far along the road to LCARS you are. At its default of `0rem`
+the inside of each elbow is square; around `1.5rem` it gets the familiar LCARS curve. It needs
+a unit, and can be set on the screen or on individual frames.
+
+Titles, labels, status text, and buttons are uppercase with `--pk-letter-spacing` (default `0.06em`).
+
 ## Dynamic Theme Selection
 The ```index.html``` file in the repository illustrates two techniques for
 dynamically changing themes and theme components.
@@ -87,8 +96,9 @@ dynamically changing themes and theme components.
 The first is to change the ```href=``` attribute of the of the stylesheet link in
 the documents header. See the ```changeTheme()``` handler.
 
-The second technique is to use ```data-``` attributes along with CSS attribute selectors. See the ```toggleAlert()``` handler.
-Overriding `--pk-primary` on any element recolors every frame inside it, titles included.
+The second technique is to toggle a class on part of the page; see the ```toggleAlert()``` handler, which toggles `pk-alert`.
+More generally, overriding `--pk-primary` (or any token) on an element, via a class or a `data-` attribute selector,
+recolors every frame inside it, titles included.
 
 ## Migrating From 1.x
 - 2.x is distributed from npm (`cdn.jsdelivr.net/npm/protokuda@...`). Existing 1.x links

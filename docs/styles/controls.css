@@ -29,8 +29,20 @@ don't leak into the rest of the host page.
     border: none;
     padding: 0.5rem;
     text-align: left;
+    text-transform: uppercase;
+    letter-spacing: var(--pk-letter-spacing);
     color: var(--pk-button-fg);
     background-color: var(--pk-button-bg);
+  }
+
+  /** <button class="pk-button" data-code="47-1138"> shows its code bottom-right. */
+  :where(.pk-screen) .pk-button[data-code]::after {
+    content: attr(data-code);
+    display: block;
+    margin-top: 0.25rem;
+    text-align: right;
+    font-size: 0.75em;
+    opacity: 0.75;
   }
 
   :where(.pk-screen) :is(input[type="button"], .pk-button)::-moz-focus-inner {

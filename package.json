@@ -23,7 +23,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rm -rf dist && mkdir -p dist/themes && cd docs/styles && cat tokens.css colors.css body.css controls.css frame.css screen.css > ../../dist/protokuda.css && cd ../.. && cp docs/themes/*.css dist/themes",
+    "build": "rm -rf dist && mkdir -p dist/themes && cd docs/styles && cat tokens.css colors.css body.css controls.css frame.css screen.css alert.css > ../../dist/protokuda.css && cd ../.. && cp docs/themes/*.css dist/themes",
     "prepack": "npm run build",
     "preversion": "git fetch --tags",
     "postversion": "git push --follow-tags"

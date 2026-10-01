@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="styles/controls.css" />
   <link rel="stylesheet" href="styles/frame.css" />
   <link rel="stylesheet" href="styles/screen.css" />
+  <link rel="stylesheet" href="styles/alert.css" />
   <link rel="stylesheet" href="layout.css" />
   <link id="theme" rel="stylesheet" href="themes/greysmoke.css" />
   <title>Protokuda</title>
@@ -25,22 +26,13 @@
     }
 
     function toggleAlert(id) {
-      const el = document.getElementById(id);
-      if (el) {
-        if (el.getAttribute("data-theme")) {
-          el.removeAttribute("data-theme")
-        } else {
-          el.setAttribute("data-theme", "alert")
-        }
-      }
+      document.getElementById(id)?.classList.toggle("pk-alert");
+    }
+
+    function setInnerRadius(range) {
+      document.getElementById("screen").style.setProperty("--pk-inner-radius", range.value + "rem");
     }
   </script>
-
-  <style>
-    [data-theme="alert"] {
-      --pk-primary: var(--pk-error);
-    }
-  </style>
 </head>
 
 <body>
@@ -55,8 +47,8 @@
       <div class="pk-title">Bracketed Frame</div>
       <div class="pk-label">Scan in progress...</div>
       <div class="pk-items">
-        <button class="pk-button">Long Range Scan</button>
-        <button class="pk-button">Short Range Scan</button>
+        <button class="pk-button" data-code="47-1138">Long Range Scan</button>
+        <button class="pk-button" data-code="47-2210">Short Range Scan</button>
       </div>
       <div class="pk-content">
         class=&quot;pk-frame pk-bracket pk-sidebar&quot;
@@ -77,6 +69,10 @@
           <option value="themes/atomictangerine.css">Atomic Tangerine</option>
           <option value="themes/redalert.css">Red Alert</option>
         </select>
+        <p>
+          <label for="innerradius">Inner Radius</label>
+          <input id="innerradius" type="range" min="0" max="2" step="0.25" value="0" oninput="setInnerRadius(this);" />
+        </p>
       </div>
     </div>
     <div class="d pk-frame pk-partial pk-flip">
@@ -112,9 +108,9 @@
         </p>
       </div>
       <div class="pk-items">
-        <button class="pk-button">one</button>
-        <button class="pk-button">two</button>
-        <button class="pk-button">three</button>
+        <button class="pk-button" data-code="01-74">one</button>
+        <button class="pk-button" data-code="02-1701">two</button>
+        <button class="pk-button" data-code="03-0042">three</button>
       </div>
       <div class="pk-label">
         <span>Item one...</span>

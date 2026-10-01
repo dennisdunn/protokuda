@@ -20,6 +20,10 @@
     --pk-frame-radius: 2rem;
     --pk-sidebar-width: 5rem;
     --pk-statusline-height: 2rem;
+    --pk-inner-radius: 0rem;       /* the elbow's inner curve; 0 is proto, ~1.5rem is LCARS. Needs a unit. */
+
+    /** Type */
+    --pk-letter-spacing: 0.06em;   /* titles, labels, status, and buttons */
 
     /**
     * Default colors (Grey Smoke). --pk-on-backdrop is deliberately left unset:

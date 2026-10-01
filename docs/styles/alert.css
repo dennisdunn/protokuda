@@ -1,0 +1,33 @@
+/**
+Alert
+
+Add .pk-alert to a frame (local alert) or to the screen (global alert).
+Primary switches to the error color and pulses, unless the viewer
+prefers reduced motion.
+
+The pulse animates a registered property, which can't live in a layer.
+*/
+@property --pk-alert-mix {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 100%;
+}
+
+@layer protokuda.base {
+  .pk-alert {
+    --pk-primary: color-mix(in srgb, var(--pk-error) var(--pk-alert-mix), var(--pk-backdrop));
+    animation: pk-alert-pulse 1.2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pk-alert-pulse {
+    to {
+      --pk-alert-mix: 55%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pk-alert {
+      animation: none;
+    }
+  }
+}

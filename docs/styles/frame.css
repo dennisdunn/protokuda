@@ -5,6 +5,10 @@ Frame types set the edge widths logically:
   --_head  top edge         --_foot  bottom edge
   --_start elbow-side edge  --_end   opposite edge
 .pk-mirror swaps start/end and .pk-flip swaps head/foot.
+
+The inner corners (--pk-inner-radius) are drawn by ::before (the
+head/start corner) and ::after (the foot/start corner). The --_c*
+variables place them; --_top-bar is whichever edge is physically on top.
 */
 @layer protokuda.base {
   .pk-frame {
@@ -12,6 +16,17 @@ Frame types set the edge widths logically:
     --_foot: var(--pk-frame-line);
     --_start: var(--pk-frame-line);
     --_end: var(--pk-frame-line);
+    --_top-bar: var(--_head);
+
+    --_cl: 0;           /* corner left/right */
+    --_cr: auto;
+    --_cx: 100%;        /* gradient center x */
+    --_head-t: 0;       /* head corner top/bottom */
+    --_head-b: auto;
+    --_head-y: 100%;
+    --_foot-t: auto;    /* foot corner top/bottom */
+    --_foot-b: 0;
+    --_foot-y: 0%;
 
     position: relative;
     border-style: solid;
@@ -22,10 +37,22 @@ Frame types set the edge widths logically:
   }
 
   .pk-frame.pk-mirror {
+    --_cl: auto;
+    --_cr: 0;
+    --_cx: 0%;
+
     border-width: var(--_head) var(--_start) var(--_foot) var(--_end);
   }
 
   .pk-frame.pk-flip {
+    --_top-bar: var(--_foot);
+    --_head-t: auto;
+    --_head-b: 0;
+    --_head-y: 0%;
+    --_foot-t: 0;
+    --_foot-b: auto;
+    --_foot-y: 100%;
+
     border-width: var(--_foot) var(--_end) var(--_head) var(--_start);
   }
 
@@ -64,7 +91,45 @@ Frame types set the edge widths logically:
     --_foot: var(--pk-statusline-height);
   }
 
+  /**
+  * Inner corners. Each one is a square of primary with a quarter circle
+  * cut out of it. Its size collapses to 0 when the adjoining bar is 0,
+  * so corners only appear where two edges actually meet.
+  */
+  .pk-frame::before,
+  .pk-frame::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    left: var(--_cl);
+    right: var(--_cr);
+    width: min(var(--pk-inner-radius), calc(var(--_start) * 1000));
+  }
+
+  .pk-frame::before {
+    top: var(--_head-t);
+    bottom: var(--_head-b);
+    height: min(var(--pk-inner-radius), calc(var(--_head) * 1000));
+    background: radial-gradient(circle at var(--_cx) var(--_head-y),
+        transparent calc(var(--pk-inner-radius) - 0.5px),
+        var(--pk-primary) var(--pk-inner-radius));
+  }
+
+  .pk-frame::after {
+    top: var(--_foot-t);
+    bottom: var(--_foot-b);
+    height: min(var(--pk-inner-radius), calc(var(--_foot) * 1000));
+    background: radial-gradient(circle at var(--_cx) var(--_foot-y),
+        transparent calc(var(--pk-inner-radius) - 0.5px),
+        var(--pk-primary) var(--pk-inner-radius));
+  }
+
   /** Frame contents */
+  .pk-frame > :is(.pk-title, .pk-label, .pk-status) {
+    text-transform: uppercase;
+    letter-spacing: var(--pk-letter-spacing);
+  }
+
   .pk-frame > .pk-title,
   .pk-frame > .pk-label {
     position: absolute;
@@ -87,8 +152,25 @@ Frame types set the edge widths logically:
     left: var(--pk-frame-side);
   }
 
-  .pk-frame.pk-mirror > .pk-label {
-    align-items: flex-end;
+  /**
+  * When the frame has a top edge, the title sits in a gap cut into it.
+  * (Not when that edge is a flipped statusline; the status text lives there.)
+  */
+  .pk-frame:not(.pk-bracket, .pk-partial, .pk-statusline.pk-flip) > .pk-title,
+  .pk-frame.pk-partial.pk-flip:not(.pk-statusline) > .pk-title {
+    top: calc(var(--_top-bar) / -2);
+    right: var(--pk-frame-radius);
+    transform: translateY(-50%);
+    padding-inline: 0.4em;
+    line-height: 1;
+    white-space: nowrap;
+    background: linear-gradient(var(--pk-backdrop), var(--pk-backdrop)) center / 100% var(--_top-bar) no-repeat;
+  }
+
+  .pk-frame.pk-mirror:not(.pk-bracket, .pk-partial, .pk-statusline.pk-flip) > .pk-title,
+  .pk-frame.pk-partial.pk-flip.pk-mirror:not(.pk-statusline) > .pk-title {
+    right: auto;
+    left: var(--pk-frame-radius);
   }
 
   .pk-frame > .pk-content {
@@ -113,7 +195,6 @@ Frame types set the edge widths logically:
   .pk-frame > .pk-items > .pk-button {
     width: var(--pk-sidebar-width);
     overflow: hidden;
-    text-transform: uppercase;
   }
 
   .pk-frame > .pk-status {
