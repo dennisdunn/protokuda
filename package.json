@@ -28,6 +28,7 @@
     "build:site": "node scripts/build.mjs --site",
     "prepack": "npm run build",
     "preversion": "git fetch --tags",
+    "version": "node scripts/stamp-version.mjs && git add demo/index.html",
     "postversion": "git push --follow-tags"
   },
   "devDependencies": {
