@@ -1,0 +1,313 @@
+/**
+Demo console
+
+Styles for the demo page's widgets. They only use Protokuda's tokens, so every
+theme, frame theme, and alert recolors them. None of this is part of the library.
+*/
+
+/* Let each frame's content fill it, so the widgets can size to their frame. */
+.pk-screen > .pk-frame {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* :where() keeps this at class specificity so the widget rules below can override it. */
+:where(.pk-screen > .pk-frame) > .pk-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.pk-content p {
+  margin: 0;
+}
+
+.pk-content label {
+  text-transform: uppercase;
+  letter-spacing: var(--pk-letter-spacing);
+}
+
+.spec {
+  margin-top: auto;
+  font-size: 0.7rem;
+  opacity: 0.55;
+}
+
+/** Masthead */
+.masthead {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.masthead h1 {
+  margin: 0;
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  font-weight: 600;
+  line-height: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--pk-on-backdrop, var(--pk-primary));
+}
+
+.masthead .tagline {
+  margin-top: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  opacity: 0.8;
+}
+
+.readout {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 0.25rem 2rem;
+  margin: 0;
+}
+
+.readout dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  opacity: 0.7;
+}
+
+.readout dd {
+  margin: 0;
+  font-size: 1.6rem;
+  font-variant-numeric: tabular-nums;
+  text-transform: uppercase;
+  color: var(--pk-on-backdrop, var(--pk-primary));
+}
+
+.readout dd code {
+  font-size: 1rem;
+}
+
+.readout dd a {
+  color: inherit;
+  text-underline-offset: 0.15em;
+}
+
+.readout dd a:hover {
+  color: var(--pk-accent);
+}
+
+/** Sensor scope */
+.sensors {
+  container-type: size;
+  min-height: 18rem;
+  align-items: center;
+  /* Room for the frame's label below the class hint. */
+  padding-bottom: 1.75rem;
+}
+
+.scope {
+  --_ring: color-mix(in srgb, var(--pk-accent) 45%, transparent);
+  --_rings: 5;
+
+  position: relative;
+  flex: none;
+  width: min(100cqw, 100cqh - 2rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px var(--pk-accent);
+  background:
+    linear-gradient(var(--_ring), var(--_ring)) center / 1px 100% no-repeat,
+    linear-gradient(var(--_ring), var(--_ring)) center / 100% 1px no-repeat,
+    repeating-radial-gradient(circle,
+      transparent 0 calc(50% / var(--_rings) - 1px),
+      var(--_ring) calc(50% / var(--_rings) - 1px) calc(50% / var(--_rings)));
+}
+
+.scope[data-range="short"] {
+  --_rings: 2;
+}
+
+.scope .sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg,
+      transparent 0deg 290deg,
+      color-mix(in srgb, var(--pk-accent) 55%, transparent) 360deg);
+  animation: scope-sweep 4s linear infinite;
+}
+
+.scope .blip {
+  position: absolute;
+  width: 0.6rem;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: var(--pk-primary);
+  box-shadow: 0 0 0.6rem var(--pk-primary);
+  animation: scope-blip 4s linear infinite;
+}
+
+.scope .blip.hostile {
+  background: var(--pk-error);
+  box-shadow: 0 0 0.6rem var(--pk-error);
+}
+
+@keyframes scope-sweep {
+  to {
+    rotate: 1turn;
+  }
+}
+
+/* A blip flares as the sweep passes it (its delay is set from its bearing), then fades. */
+@keyframes scope-blip {
+  0% { opacity: 1; scale: 1.4; }
+  60% { opacity: 0.4; scale: 1; }
+  100% { opacity: 0.35; }
+}
+
+/** Telemetry cascade */
+.cascade {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(3.4rem, 1fr));
+  grid-auto-rows: 1.25em;
+  align-content: start;
+  gap: 0 0.75rem;
+  overflow: hidden;
+  /* Size from the frame, never from the cells, or filling it would grow it. */
+  contain: size;
+  min-height: 4.5rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.cascade span {
+  transition: color 0.4s;
+}
+
+.cascade .hot {
+  color: var(--pk-primary);
+}
+
+.cascade .cool {
+  color: var(--pk-accent);
+}
+
+.cascade .dim {
+  opacity: 0.45;
+}
+
+/** Helm */
+.warp {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  text-transform: uppercase;
+  letter-spacing: var(--pk-letter-spacing);
+}
+
+.warp output {
+  font-size: 2.75rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--pk-on-backdrop, var(--pk-primary));
+}
+
+.pair {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: var(--pk-letter-spacing);
+}
+
+.pair input:is([type="number"], [type="text"]) {
+  width: 6.5rem;
+  min-width: 0;
+}
+
+.pair label:has([type="radio"]) {
+  margin-left: 0.4rem;
+}
+
+/** Ship systems */
+.systems {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 11rem;
+  grid-template-rows: 1fr auto;
+}
+
+.systems .settings {
+  grid-column: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+}
+
+.gauges {
+  display: grid;
+  grid-template-columns: auto 1fr 3ch;
+  align-content: start;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: var(--pk-letter-spacing);
+}
+
+.gauges .bar {
+  height: 0.9rem;
+  background: color-mix(in srgb, var(--pk-primary) 20%, transparent);
+}
+
+.gauges .fill {
+  height: 100%;
+  width: calc(var(--level) * 1%);
+  background: var(--pk-primary);
+  /* Cut the bar into LCARS-ish segments. */
+  mask: repeating-linear-gradient(90deg, #000 0 10px, transparent 10px 13px);
+  transition: width 1.2s ease-in-out;
+}
+
+.gauges .value {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--pk-on-backdrop, var(--pk-primary));
+}
+
+#log {
+  max-width: 11rem;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+}
+
+#log span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 559px) {
+  .systems {
+    grid-template-columns: 1fr;
+  }
+
+  #log {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scope .sweep,
+  .scope .blip {
+    animation: none;
+  }
+
+  .gauges .fill,
+  .cascade span {
+    transition: none;
+  }
+}

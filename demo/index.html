@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="pk-theme-atomic">
 
 <head>
   <meta charset="utf-8" />
@@ -10,6 +10,7 @@
   <!-- In development this is src/protokuda.css; on the published site it is the built bundle. -->
   <link rel="stylesheet" href="protokuda.css" />
   <link rel="stylesheet" href="layout.css" />
+  <link rel="stylesheet" href="demo.css" />
   <title>Protokuda</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -40,6 +41,7 @@
     document.addEventListener("DOMContentLoaded", () => {
       fillThemeList(document.getElementById("themelist"));
       fillThemeList(document.getElementById("framethemelist"), "Same as page");
+      document.getElementById("themelist").value = "atomic";
     });
 
     function toggleAlert(id) {
@@ -50,93 +52,121 @@
       document.getElementById("screen").style.setProperty("--pk-inner-radius", range.value + "rem");
     }
   </script>
+  <!-- The console's moving parts (clock, sensors, data cascade, gauges). Not needed to use Protokuda. -->
+  <script src="demo.js" defer></script>
 </head>
 
 <body>
   <div id="screen" class="pk-screen">
-    <div class="a pk-frame pk-partial pk-mirror">
-      <div class="pk-title">Mirrored Partial Frame</div>
-      <div class="pk-content">
-        class=&quot;pk-frame pk-partial pk-mirror&quot;
+    <header class="a pk-frame pk-partial pk-mirror">
+      <div class="pk-title">Operations</div>
+      <div class="pk-content masthead">
+        <div>
+          <h1>Protokuda</h1>
+          <p class="tagline">A Star Trek-ish stylesheet</p>
+        </div>
+        <dl class="readout">
+          <div><dt>Stardate</dt><dd id="stardate">—</dd></div>
+          <div><dt>Condition</dt><dd id="condition">Green</dd></div>
+          <div><dt>Install</dt><dd><code>npm i protokuda</code></dd></div>
+          <div><dt>Design &amp; Theme</dt><dd><a href="https://dennisdunn.github.io/pk-studio/">PK Studio</a></dd></div>
+        </dl>
       </div>
-    </div>
-    <div class="b pk-frame pk-bracket pk-sidebar">
-      <div class="pk-title">Bracketed Frame</div>
-      <div class="pk-label">Scan in progress...</div>
+    </header>
+
+    <section class="b pk-frame pk-bracket pk-sidebar">
+      <div class="pk-title">Sensors</div>
+      <div class="pk-label" id="scanlabel">Scan in progress...</div>
       <div class="pk-items">
-        <button class="pk-button" data-code="47-1138">Long Range Scan</button>
-        <button class="pk-button" data-code="47-2210">Short Range Scan</button>
+        <button class="pk-button" data-code="47-1138" onclick="setScan('long')">Long Range Scan</button>
+        <button class="pk-button" data-code="47-2210" onclick="setScan('short')">Short Range Scan</button>
       </div>
-      <div class="pk-content">
-        class=&quot;pk-frame pk-bracket pk-sidebar&quot;
+      <div class="pk-content sensors">
+        <div class="scope" id="scope" data-range="long">
+          <div class="sweep"></div>
+        </div>
+        <code class="spec">pk-frame pk-bracket pk-sidebar</code>
       </div>
-    </div>
-    <div class="c pk-frame pk-statusline">
-      <div class="pk-content">
-        class=&quot;pk-frame pk-statusline&quot;
-      </div>
-      <div class="pk-title">Box Frame</div>
+    </section>
+
+    <section class="c pk-frame pk-statusline">
+      <div class="pk-title">Display</div>
       <div class="pk-status">
-        <span>Stardate 2024.2.22</span>
+        <span id="statusline">Stardate —</span>
       </div>
-      <div class="pk-content">
-        <label for="themelist">Select Theme</label>
-        <select id="themelist" onchange="setTheme(document.documentElement, this.value);"></select>
+      <div class="pk-content stack">
         <p>
-          <label for="innerradius">Inner Radius</label>
-          <input id="innerradius" type="range" min="0" max="2" step="0.25" value="0" oninput="setInnerRadius(this);" />
+          <label for="themelist">Global Theme</label>
+          <select id="themelist" onchange="setTheme(document.documentElement, this.value);"></select>
         </p>
+        <p>
+          <label for="innerradius">Inner Radius <output id="radiusout">0</output></label>
+          <input id="innerradius" type="range" min="0" max="2" step="0.25" value="0"
+            oninput="setInnerRadius(this); radiusout.value = this.value;" />
+        </p>
+        <code class="spec">pk-frame pk-statusline</code>
       </div>
-    </div>
-    <div class="d pk-frame pk-partial pk-flip">
-      <div class="pk-title">Flipped Partial Frame</div>
-      <div class="pk-content">
-        class=&quot;pk-frame pk-partial pk-flip&quot;
-        <input type="text" value="Lorem" />
-        <input type="number" value="33" />
-        <input type="range" />
-        <p>
-          <input name="radiogrp" type="radio" checked />
-          <input name="radiogrp" type="radio" />
+    </section>
+
+    <section class="d pk-frame pk-partial pk-flip">
+      <div class="pk-title">Helm</div>
+      <div class="pk-content stack">
+        <div class="warp">
+          <span class="warp-label">Warp</span>
+          <output id="warpout">5.0</output>
+        </div>
+        <input id="warp" type="range" min="1" max="9.9" step="0.1" value="5" aria-label="Warp factor"
+          oninput="setWarp(this.value)" />
+        <p class="pair">
+          <label for="heading">Heading</label>
+          <input id="heading" type="number" min="0" max="359" value="47" />
+        </p>
+        <p class="pair">
+          <label for="course">Course</label>
+          <input id="course" type="text" value="Sector 001" />
+        </p>
+        <p class="pair" role="radiogroup" aria-label="Shields">
+          <span>Shields</span>
+          <span>
+            <label><input name="shields" type="radio" value="up" onchange="setShields(this.value)" /> Up</label>
+            <label><input name="shields" type="radio" value="down" checked onchange="setShields(this.value)" /> Down</label>
+          </span>
         </p>
         <p>
-          <input id="globalalert" type="checkbox" onclick="toggleAlert('screen')" />
-          <label for="globalalert">Activate Global Alert</label>
+          <input id="globalalert" type="checkbox" onclick="toggleAlert('screen'); setCondition(this.checked);" />
+          <label for="globalalert">Global Alert</label>
         </p>
+        <code class="spec">pk-frame pk-partial pk-flip</code>
       </div>
-    </div>
-    <div class="e pk-frame pk-partial">
-      <div class="pk-title">Partial Frame</div>
-      <div class="pk-content">
-        class=&quot;pk-frame pk-partial&quot;
-      </div>
-    </div>
-    <div id="frame" class="f pk-frame pk-std pk-sidebar">
-      <div class="pk-title">Standard Frame</div>
-      <div class="pk-content">
-        class=&quot;pk-frame pk-std pk-sidebar&quot;
-        <p>
-          <input id="localalert" type="checkbox" onclick="toggleAlert('frame')" />
-          <label for="localalert">Activate Local Alert</label>
-        </p>
-        <p>
-          <label for="framethemelist">Frame Theme</label>
-          <select id="framethemelist" onchange="setTheme(document.getElementById('frame'), this.value);"></select>
-        </p>
+    </section>
+
+    <section class="e pk-frame pk-partial">
+      <div class="pk-title">Telemetry</div>
+      <div class="pk-content cascade" id="cascade" aria-hidden="true"></div>
+    </section>
+
+    <section id="frame" class="f pk-frame pk-std pk-sidebar">
+      <div class="pk-title">Ship Systems</div>
+      <div class="pk-content systems">
+        <div class="gauges" id="gauges"></div>
+        <div class="settings">
+          <p>
+            <input id="localalert" type="checkbox" onclick="toggleAlert('frame')" />
+            <label for="localalert">Local Alert</label>
+          </p>
+          <p>
+            <label for="framethemelist">Local Theme</label>
+            <select id="framethemelist" onchange="setTheme(document.getElementById('frame'), this.value);"></select>
+          </p>
+          <code class="spec">pk-frame pk-std pk-sidebar</code>
+        </div>
       </div>
       <div class="pk-items">
-        <button class="pk-button" data-code="01-74">one</button>
-        <button class="pk-button" data-code="02-1701">two</button>
-        <button class="pk-button" data-code="03-0042">three</button>
+        <button class="pk-button" data-code="01-74" onclick="showSystems('power')">Power</button>
+        <button class="pk-button" data-code="02-1701" onclick="showSystems('defense')">Defense</button>
       </div>
-      <div class="pk-label">
-        <span>Item one...</span>
-        <span>Item two...</span>
-        <span>Item 3...</span>
-        <span>Item D...</span>
-        <span>Item five...</span>
-      </div>
-    </div>
+      <div class="pk-label" id="log"></div>
+    </section>
   </div>
 </body>
 

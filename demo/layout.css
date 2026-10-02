@@ -1,11 +1,38 @@
 .pk-screen {
-  height: 100dvh;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 2fr 2fr;
+  grid-template-rows: auto 2fr 2fr;
   grid-template-areas:
-    'a a e e'
+    'a a a e'
     'b b d c'
     'b b f f';
+}
+
+/* Fill the window on screens big enough to hold the whole console. */
+@media (min-width: 900px) and (min-height: 640px) {
+  .pk-screen {
+    height: 100dvh;
+  }
+}
+
+/* Two columns on tablets, one on phones; the page scrolls instead. */
+@media (max-width: 899px) {
+  .pk-screen {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'a a'
+      'e e'
+      'b b'
+      'd c'
+      'f f';
+  }
+}
+
+@media (max-width: 559px) {
+  .pk-screen {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'a' 'e' 'b' 'd' 'c' 'f';
+  }
 }
 
 .pk-screen .a {
