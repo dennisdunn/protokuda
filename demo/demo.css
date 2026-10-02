@@ -64,7 +64,7 @@ theme, frame theme, and alert recolors them. None of this is part of the library
 
 .readout {
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(3, auto);
   gap: 0.25rem 2rem;
   margin: 0;
 }
@@ -297,6 +297,11 @@ theme, frame theme, and alert recolors them. None of this is part of the library
 
   #log {
     display: none;
+  }
+
+  /* Three columns squeeze the install command and PK Studio link onto two lines. */
+  .readout {
+    grid-template-columns: repeat(2, auto);
   }
 }
 
