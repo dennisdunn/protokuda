@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Protokuda</title>
+  <rect width="512" height="512" rx="96" fill="#000"/>
+  <!-- A pk-std frame: top and bottom elbows, rounded outside, square inside, with one sidebar button -->
+  <path fill="#fc6" d="M64 200V184A112 112 0 0 1 176 72H448V144H152V200Z"/>
+  <rect x="64" y="216" width="88" height="96" fill="#f96"/>
+  <path fill="#fc6" d="M64 328H152V368H448V440H176A112 112 0 0 1 64 328Z"/>
+</svg>
