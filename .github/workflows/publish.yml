@@ -18,21 +18,24 @@ jobs:
   npm:
     if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
       id-token: write   # npm trusted publishing (OIDC) and provenance
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-node@v5
+      # Node 24 LTS bundles npm 11.5.1 or newer, which trusted publishing needs.
+      # No dependency cache: a release build shouldn't trust a cache other runs can write.
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org
 
-      # Trusted publishing needs npm 11.5.1 or newer.
-      - run: npm install -g npm@latest
-
-      - run: npm ci
+      # No dependency needs an install script on Linux, so don't run any.
+      - run: npm ci --ignore-scripts
 
       - name: Check tag matches package.json
         run: |
@@ -57,6 +60,7 @@ jobs:
 
   pages:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
       pages: write
@@ -68,21 +72,23 @@ jobs:
       group: pages
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
 
-      - run: npm ci
+      - run: npm ci --ignore-scripts
 
       - run: npm run build:site
 
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
 
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
       - id: deploy
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
