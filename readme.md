@@ -163,7 +163,8 @@ without reloading the page.
 ```
 npm version patch   # or minor / major
 ```
-This bumps `package.json`, commits, tags, and pushes. The tag triggers `.github/workflows/publish.yml`,
+This fetches tags first (so a version already tagged on GitHub fails before anything changes),
+then bumps `package.json`, commits, tags, and pushes. The tag triggers `.github/workflows/publish.yml`,
 which publishes to npm and deploys the demo to GitHub Pages. jsDelivr and unpkg pick the new
 version up automatically. Running the workflow by hand from the Actions tab redeploys the site only.
 
