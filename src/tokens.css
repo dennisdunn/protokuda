@@ -14,6 +14,11 @@
   --pk-sidebar-width: 5rem;
   --pk-statusline-height: 2rem;
   --pk-inner-radius: 0rem;       /* the elbow's inner curve; 0 is proto, ~1.5rem is LCARS. Needs a unit. */
+  /*
+  * --pk-elbow-radius and --pk-end-radius (outer corners on the elbow side and the
+  * far side) are deliberately left unset: they follow --pk-frame-radius at the
+  * point of use, so setting --pk-frame-radius on a frame still rounds every corner.
+  */
 
   /** Type */
   --pk-letter-spacing: 0.06em;   /* titles, labels, status, and buttons */

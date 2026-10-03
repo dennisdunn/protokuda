@@ -101,6 +101,11 @@ the inside of each elbow is square; around `1.5rem` it gets the familiar LCARS c
 a unit, and can be set on the screen or on individual frames. It applies to `pk-std` and `pk-partial`
 frames; plain box frames keep thin, evenly rounded corners.
 
+The outer corners follow `--pk-frame-radius`, and two optional tokens split it: `--pk-elbow-radius`
+rounds the elbow corners (the sidebar side) and `--pk-end-radius` the far corners, where the top and
+bottom bars end. Set `--pk-end-radius: 0rem` for square bar ends. Both follow `--pk-frame-radius`
+when unset, and follow `pk-mirror` to whichever side the elbow is on.
+
 Titles, labels, status text, and buttons are uppercase with `--pk-letter-spacing` (default `0.06em`).
 
 ## Dynamic Theme Selection

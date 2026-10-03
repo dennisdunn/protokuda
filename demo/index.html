@@ -48,8 +48,8 @@
       document.getElementById(id)?.classList.toggle("pk-alert");
     }
 
-    function setInnerRadius(range) {
-      document.getElementById("screen").style.setProperty("--pk-inner-radius", range.value + "rem");
+    function setRadius(token, range) {
+      document.getElementById("screen").style.setProperty(token, range.value + "rem");
     }
   </script>
   <!-- The console's moving parts (clock, sensors, data cascade, gauges). Not needed to use Protokuda. -->
@@ -103,7 +103,12 @@
         <p>
           <label for="innerradius">Inner Radius <output id="radiusout">0</output></label>
           <input id="innerradius" type="range" min="0" max="2" step="0.25" value="0"
-            oninput="setInnerRadius(this); radiusout.value = this.value;" />
+            oninput="setRadius('--pk-inner-radius', this); radiusout.value = this.value;" />
+        </p>
+        <p>
+          <label for="endradius">End Radius <output id="endradiusout">2</output></label>
+          <input id="endradius" type="range" min="0" max="2" step="0.25" value="2"
+            oninput="setRadius('--pk-end-radius', this); endradiusout.value = this.value;" />
         </p>
         <code class="spec">pk-frame pk-statusline</code>
       </div>

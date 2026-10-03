@@ -6,6 +6,11 @@ Frame types set the edge widths logically:
   --_start elbow-side edge  --_end   opposite edge
 .pk-mirror swaps start/end and .pk-flip swaps head/foot.
 
+The outer corners are rounded by --_r-start (the two elbow corners,
+--pk-elbow-radius) and --_r-end (the far corners, --pk-end-radius); both
+fall back to --pk-frame-radius. Flipping keeps start and end on the same
+side, so only .pk-mirror reorders them.
+
 The inner corners (--pk-inner-radius) are drawn by ::before (the
 head/start corner) and ::after (the foot/start corner). The --_c*
 variables place them; --_top-bar is whichever edge is physically on top.
@@ -16,6 +21,9 @@ variables place them; --_top-bar is whichever edge is physically on top.
   --_start: var(--pk-frame-line);
   --_end: var(--pk-frame-line);
   --_top-bar: var(--_head);
+  --_r-start: var(--pk-elbow-radius, var(--pk-frame-radius));
+  --_r-end: var(--pk-end-radius, var(--pk-frame-radius));
+  --_inset-end: max(var(--_r-end), var(--pk-frame-side)); /* nameplate and status, from the far corner */
 
   --_cl: 0;           /* corner left/right */
   --_cr: auto;
@@ -29,7 +37,7 @@ variables place them; --_top-bar is whichever edge is physically on top.
 
   position: relative;
   border-style: solid;
-  border-radius: var(--pk-frame-radius);
+  border-radius: var(--_r-start) var(--_r-end) var(--_r-end) var(--_r-start);
   border-width: var(--_head) var(--_end) var(--_foot) var(--_start);
   background-color: var(--pk-backdrop-light);
   border-color: var(--pk-primary);
@@ -40,6 +48,7 @@ variables place them; --_top-bar is whichever edge is physically on top.
   --_cr: 0;
   --_cx: 0%;
 
+  border-radius: var(--_r-end) var(--_r-start) var(--_r-start) var(--_r-end);
   border-width: var(--_head) var(--_start) var(--_foot) var(--_end);
 }
 
@@ -161,7 +170,7 @@ variables place them; --_top-bar is whichever edge is physically on top.
 .pk-frame:not(.pk-bracket, .pk-partial, .pk-statusline.pk-flip) > .pk-title,
 .pk-frame.pk-partial.pk-flip:not(.pk-statusline) > .pk-title {
   top: calc(var(--_top-bar) / -2);
-  right: var(--pk-frame-radius);
+  right: var(--_inset-end);
   transform: translateY(-50%);
   padding: 0.15em 0.4em;
   line-height: 1;
@@ -173,7 +182,7 @@ variables place them; --_top-bar is whichever edge is physically on top.
 .pk-frame.pk-mirror:not(.pk-bracket, .pk-partial, .pk-statusline.pk-flip) > .pk-title,
 .pk-frame.pk-partial.pk-flip.pk-mirror:not(.pk-statusline) > .pk-title {
   right: auto;
-  left: var(--pk-frame-radius);
+  left: var(--_inset-end);
 }
 
 .pk-frame > .pk-content {
@@ -183,7 +192,7 @@ variables place them; --_top-bar is whichever edge is physically on top.
 
 .pk-frame > .pk-items {
   position: absolute;
-  top: var(--pk-frame-radius);
+  top: var(--_r-start);
   left: calc(-1 * var(--pk-sidebar-width));
   display: flex;
   flex-flow: column nowrap;
@@ -204,7 +213,7 @@ variables place them; --_top-bar is whichever edge is physically on top.
   position: absolute;
   bottom: calc(-1 * var(--pk-statusline-height));
   height: var(--pk-statusline-height);
-  right: var(--pk-frame-radius);
+  right: var(--_inset-end);
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -213,7 +222,7 @@ variables place them; --_top-bar is whichever edge is physically on top.
 
 .pk-frame.pk-mirror > .pk-status {
   right: auto;
-  left: var(--pk-frame-radius);
+  left: var(--_inset-end);
 }
 
 .pk-frame.pk-flip > .pk-status {
